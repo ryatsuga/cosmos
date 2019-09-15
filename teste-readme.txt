@@ -10,3 +10,4 @@ __       __
 
 Desenvolvido por:
 Leandro F. Passos
+Jhonas Almeida dos Santos
