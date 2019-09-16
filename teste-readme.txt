@@ -9,5 +9,6 @@ __       __
     I I
 
 Desenvolvido por:
-Leandro F. Passos - RA: 61812693
+Guilherme Henrique Silva Andrade - RA: 61812641
 Jhonas Almeida dos Santos - RA: 61820930
+Leandro F. Passos - RA: 61812693
