@@ -1,0 +1,19 @@
+{% extends "website/baseManutencaoApp.html" %}
+{% block content %}
+<div class="d-flex justify-content-center" style="padding: 30px; height: 150px; background-color: #f0cf13;">
+  <div class="column" align="center">
+  <h3>Logout</h3>
+<div class="row" style="background-color: black; height:4px; width: 100px;">
+</div>
+<p>Você deslogou de nosso site.</p>
+</div>
+</div>
+
+<div class="d-flex justify-content-center bd-highlight mb-3"style="margin-top:20px" >
+<div class="column" align="center">
+<h2> Deseja acessar novamente?</h2>
+
+<a class="ml-2" href="{% url 'login' %}">Acessar Novamente</a>
+	</div>		
+</div>
+{% endblock content %}

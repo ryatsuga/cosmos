@@ -1,0 +1,115 @@
+{% extends "website/baseManutencaoApp.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center" style="padding: 30px; height: 150px; background-color: #f0cf13; margin-bottom: 25px;">
+  <div class="column" align="center">
+  <h3>Meu Perfil</h3>
+<div class="row" style="background-color: black; height:4px; width: 100px;">
+</div>
+<p>Suas informações de perfil.</p>
+</div>
+</div>
+
+<div class="d-flex justify-content-center">
+	<div class="content-section" style="width: 700px;">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+			<div class="media-body">
+				<h2 class="account-heading">{{ user.profile.get_full_name }}</h2>
+				<p class="text-secondary">@{{ user.username }}</p>
+			</div>
+		</div>
+		
+<!-- Dentro daqui vai ser os colapse -->
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Perfil
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>Nome: </b>{{ user.profile.get_full_name }}</p>
+        <p><b>Data de nascimento: </b>{{ user.profile.data_nascimento }}</p>
+       <p><b>Sexo: </b>{{ user.profile.get_sexo_display }}</p>
+        <p><b>Estado Civil: </b>{{ user.profile.get_estado_civil_display }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Contato
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>Telefone: </b>{{ user.profile.contato1 }}</p>
+        <p><b>Celular: </b>{{ user.profile.contato2 }}</p>
+        <p><b>E-mail: </b>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Endereço
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>CEP: </b>{{ user.profile.cep }}</p>
+        <p><b>Endereço: </b>{{ user.profile.endereco }}</p>
+        <p><b>Bairro: </b>{{ user.profile.bairro }}</p>
+        <p><b>Cidade: </b>{{ user.profile.cidade }}</p>
+        <p><b>Estado: </b>{{ user.profile.uf }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim colapse -->
+<div><br></div>
+
+<button type="button" class="btn btn-outline-app" data-toggle="modal" data-target="#editarPerfil">
+  Editar Perfil
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="editarPerfil" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarPerfil">Editar Pefil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border_bottom mb-4"></legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}				
+			</fieldset>
+			<div class="form-group">
+				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
+				<button class="btn btn-outline-sucess" type='submit'>Atualizar</button>
+			</div>
+		</form>	
+    	  </div>
+   		 </div>
+		  </div>
+		</div>
+		
+	</div>
+</div>
+{% endblock content %}
