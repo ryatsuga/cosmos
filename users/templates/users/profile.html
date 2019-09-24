@@ -8,7 +8,7 @@
 		<div class="media">
 			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
 			<div class="media-body">
-				<h2 class="account-heading">{{ user.profile.get_full_name }}</h2>
+				<h2 class="account-heading">{{ user.profile.nome_completo }}</h2>
 				<p class="text-secondary">@{{ user.username }}</p>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        <p><b>Nome: </b>{{ user.profile.get_full_name }}</p>
+        <p><b>Nome: </b>{{ user.profile.nome_completo }}</p>
         <p><b>Data de nascimento: </b>{{ user.profile.data_nascimento }}</p>
        <p><b>Sexo: </b>{{ user.profile.get_sexo_display }}</p>
         <p><b>Estado Civil: </b>{{ user.profile.get_estado_civil_display }}</p>
