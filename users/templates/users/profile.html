@@ -1,14 +1,7 @@
-{% extends "website/baseManutencaoApp.html" %}
+{% extends "website/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="d-flex justify-content-center" style="padding: 30px; height: 150px; background-color: #f0cf13; margin-bottom: 25px;">
-  <div class="column" align="center">
-  <h3>Meu Perfil</h3>
-<div class="row" style="background-color: black; height:4px; width: 100px;">
-</div>
-<p>Suas informações de perfil.</p>
-</div>
-</div>
+
 
 <div class="d-flex justify-content-center">
 	<div class="content-section" style="width: 700px;">
@@ -78,7 +71,7 @@
 <!-- Fim colapse -->
 <div><br></div>
 
-<button type="button" class="btn btn-outline-app" data-toggle="modal" data-target="#editarPerfil">
+<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#editarPerfil">
   Editar Perfil
 </button>
 
@@ -101,8 +94,8 @@
 				{{ p_form|crispy }}				
 			</fieldset>
 			<div class="form-group">
-				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
-				<button class="btn btn-outline-sucess" type='submit'>Atualizar</button>
+				<button type="button" class="btn btn-outline-secondary btn-circle" data-dismiss="modal">Fechar</button>
+				<button class="btn btn-outline-sucess btn-circle" type='submit'>Atualizar</button>
 			</div>
 		</form>	
     	  </div>

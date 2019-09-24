@@ -1,21 +1,19 @@
 body {
   background-color: #fff;
-  color: #333333;
-  margin-top: 4rem;
+  color: black;
+
 }
 
 h2, h3, h4, h5, h6 {
   color: black;
 }
 h1 {
-  border-bottom: 1px solid #e6e7e8;
   font-size: 26px;
   color: black;
   padding-bottom: 10px;
   margin: 10px 0;
 }
 h2 {
-  border-bottom: 1px solid #e6e7e8;
   font-size: 24px;
   color: black;
   padding-bottom: 10px;
@@ -29,24 +27,74 @@ ul {
   margin: 0;
 }
 
+.bg-navbar-head {
+  background-color: white;
+  font-weight: bolder;
+  color: #6abdbd;
+}
+.btn-h-sp {
+  padding-top: 5px!important;
+  padding-bottom: : 5px!important;
+  padding-right: 50px!important;
+  padding-left: 50px!important;
+}
+
+.btn-circle {
+       margin: 5px;
+       padding: 5px;
+       padding-right: 20px!important;
+       padding-left: 20px!important;
+       border-radius: 30px;
+       font-weight: bold;
+}
+
+.navbar-toggler {
+  color: white!important;
+  border-color: white!important;
+}
+
+.no-li-display {
+  list-style: none!important;
+}
+
+a.nav-link-head-aux {
+  color: #6abdbd;
+}
+
+a.nav-link-head-aux:hover {
+  text-decoration: none;
+  color: #336666;
+}
+
+a.nav-link-head {
+  color: white;
+  font-weight: bold;
+}
+a.nav-link-head:hover {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
 .bg-navbar {
-  background-color: black;
+  background-color: #6abdbd;
 }
 
-.site-header .navbar-nav .nav-link {
-  color: #ffffff;
-  font-weight: 500;
+a.nav-link {
+  color: white!important;
+  font-weight: bolder!important;
 }
 
-.site-header .navbar-nav .nav-link:hover {
-  color: #f0cf13;
-  font-weight: 500;
+a.nav-link:hover {
+  color: #336666!important;
+  font-weight: bolder!important;
 }
 
-.site-header .navbar-nav .nav-link.active {
-  color: #f0cf13;
+a.nav-link.active {
+  color: #336666;
   font-weight: 500;
+  border-bottom: 5px;
+  border-color: #336666;
 }
 
 .content-section {
@@ -77,8 +125,8 @@ a.article-title:hover {
 }
 
 .header-acc-img {
-  height: 40px;
-  width: 40px;
+  height: 55px;
+  width: 55px;
 }
 
 .article-metadata {

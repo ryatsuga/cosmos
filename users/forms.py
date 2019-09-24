@@ -23,5 +23,5 @@ class ProfileUpdateForm(forms.ModelForm):
 	cpf = BRCPFField(max_length=11)
 	class Meta:
 		model = Profile
-		fields = ['image', 'sexo', 'estado_civil', 'data_nascimento', 'cpf', 'cep', 'endereco', 'complemento', 'bairro', \
+		fields = ['image', 'sexo', 'data_nascimento', 'cpf', 'cep', 'endereco', 'complemento', 'bairro', \
 		'cidade', 'uf',]

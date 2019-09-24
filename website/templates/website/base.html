@@ -7,66 +7,71 @@
 
     <!-- CSS --> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/coreui-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
-
     {% if title %}
-		<title>Explosão Cell - {{ title }}</title>
+		<title>COSMOS - {{ title }}</title>
 	{% else %}
-		<title>Explosão Cell</title>
+		<title>COSMOS</title>
 	{% endif %}
 </head>
 <body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navbar">
+    <header>
+      <!-- Navbar Topo -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-navbar-head">
         <div class="container">
           <a class="navbar-brand" href="{% url 'home' %}">
-              <img src="{% static 'website/img/favicon.png' %}" height="45px">
+              <img src="{% static 'website/img/favicon.png' %}" height="100px">
             </a>
+            <div class="navbar-nav-head">
+              {% if user.is_authenticated %}
+               <li class="nav-item no-li-display dropdown">
+               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.profile.image.url }}"></a>
+               <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{% url 'profile' %}">logado <strong>{{ user.username }}</strong></a>
+                <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{% url 'profile' %}">meu perfil</a>
+
+
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{% url 'logout' %}">sair</a>
+               </div>
+               </li>
+              {% else %}
+                <a class="button btn-info btn-circle btn-h-sp nav-link-head" href="{% url 'login' %}">ENTRAR</a>
+                <a class="nav-item nav-link-head-aux" href="{% url 'register' %}">REGISTRAR</a>
+              {% endif %}
+            </div>
+          </div>
+      </nav>
+      </header>
+      <!-- Navbar Auxiliar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-navbar">
+        <div class="container">
+          <!-- Mobile Itens -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-
-              <a class="nav-item nav-link" href="{% url 'home' %}">.início</a>
-              <a class="nav-item nav-link" href="#">.loja</a>
-              <a class="nav-item nav-link" href="{% url 'manutencao:consulta' %}">.manutenção</a>
-
-
+              <!-- Controles esquerda -->
+              <a class="nav-item nav-link" href="{% url 'home' %}">INÍCIO</a>
+              <a class="nav-item nav-link" href="#">CONSULTAS</a>
             </div>
-            
-            <div class="navbar-nav">
-               {% if user.profile.tipo_perfil == '0' %}
-              <a class="nav-item nav-link" href="{% url 'services' %}">.área do operador</a>
-            </div>
-            {% else %}
-            {% endif %}
+            <!-- Controles direita -->
+
               <div class="navbar-nav">
+              <a class="nav-item nav-link" href="{% url 'home' %}">SOBRE</a>
               {% if user.is_authenticated %}
-               <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.profile.image.url }}"></a>
-               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{% url 'profile' %}">.logado como <strong>{{ user.username }}</strong></a>
-                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{% url 'profile' %}">.meu perfil</a>
-
-
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{% url 'logout' %}">.sair</a>
-               </div>
-               </li>
-              {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">.entrar</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">.registrar</a>
+              <a class="nav-item nav-link" href="{% url 'home' %}">MINHA ÁREA</a>
               {% endif %}
             </div>
+
           </div>
         </div>
       </nav>
-    </header>
+    
   
       <div class="row">
           {% if messages %}
