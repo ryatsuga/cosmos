@@ -90,6 +90,8 @@ a.nav-link:hover {
   font-weight: bolder!important;
 }
 
+
+
 a.nav-link.active {
   color: #336666;
   font-weight: 500;
