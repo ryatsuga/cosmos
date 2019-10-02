@@ -57,7 +57,8 @@ class Profile(models.Model):
 	bairro = models.CharField(_('Bairro'),max_length=100, null=False, blank=False)
 	cidade = models.CharField(_('Cidade'),max_length=100, null=False, blank=False)
 	uf = models.CharField(_('Estado'),max_length=2, null=False, blank=False, choices=UF_CHOICES, default='MG')
-
+	#Metadata
+	completo = models.BooleanField(_('Completo'), default=False)
 
 	def __str__(self):
 		return f'{self.user.username} Perfil'

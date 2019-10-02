@@ -29,25 +29,25 @@
                <li class="nav-item no-li-display dropdown">
                <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.profile.image.url }}"></a>
                <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{% url 'profile' %}">logado <strong>{{ user.username }}</strong></a>
+                <a class="dropdown-item" href="{% url 'profile' %}">Logado como <strong>{{ user.username }}</strong></a>
                 <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{% url 'profile' %}">meu perfil</a>
+               <a class="dropdown-item" href="{% url 'profile' %}">Meu perfil</a>
 
 
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{% url 'logout' %}">sair</a>
+               <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
                </div>
                </li>
               {% else %}
-                <a class="button btn-info btn-circle btn-h-sp nav-link-head" href="{% url 'login' %}">ENTRAR</a>
-                <a class="nav-item nav-link-head-aux" href="{% url 'register' %}">REGISTRAR</a>
+                <a class="button btn-outline-info btn-circle btn-border nav-link-no-decoration btn-pad" href="{% url 'login' %}">ENTRAR</a>
+                <a class="button btn-info btn-circle nav-link-no-decoration btn-pad" href="{% url 'register' %}">REGISTRAR</a>
               {% endif %}
             </div>
           </div>
       </nav>
       </header>
       <!-- Navbar Auxiliar -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-navbar">
+      <nav class="navbar navbar-expand-md navbar-dark bg-navbar nav-bt-margin">
         <div class="container">
           <!-- Mobile Itens -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">

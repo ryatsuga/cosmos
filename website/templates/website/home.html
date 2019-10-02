@@ -1,9 +1,12 @@
 {% extends "website/base.html" %}
+{% load static %}
 {% block content %}
 
 
-<div class="d-flex justify-content-center bd-highlight mb-3">
-<h2>HOME</h2>
-	
+<div class="container">
+<h1 class="titulo" style="text-align: center;">Controle de forma rápida e eficiente<br> as suas Ordens de Serviço</h1>
+<p class="banner-p" style="text-align: center; ">Com a nossa plataforma de controle de ordens de serviço, <br>você e seus clientes tem mais controle sobre o serviço!</p>
+<p style="text-align: center; "><br><a class="button btn-info btn-circle nav-link-no-decoration btn-banner" href="{% url 'register' %}">REGISTRAR</a></p>
 </div>
+
 {% endblock content %}
