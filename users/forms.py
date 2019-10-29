@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from localflavor.br.forms import *
@@ -19,9 +19,9 @@ class UserUpdateForm(forms.ModelForm):
 		model = User
 		fields = ['username', 'email', 'first_name', 'last_name']
 
-class ProfileUpdateForm(forms.ModelForm):
+class PerfilUpdateForm(forms.ModelForm):
 	cpf = BRCPFField(max_length=11)
 	class Meta:
-		model = Profile
+		model = Perfil
 		fields = ['image', 'sexo', 'data_nascimento', 'cpf', 'cep', 'endereco', 'complemento', 'bairro', \
 		'cidade', 'uf',]

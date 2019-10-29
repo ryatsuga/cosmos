@@ -17,9 +17,26 @@
 	{% endif %}
 </head>
 <body>
+   <!-- Mensagens -->
+        <div class="row">
+          {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid">
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+              </div>
+            {% endfor %}
+          {% endif %}
+          </div>
+</div>
+          <!-- Fim Mensagens -->
     <header>
       <!-- Navbar Topo -->
       <nav class="navbar navbar-expand-md navbar-dark bg-navbar-head">
+
         <div class="container">
           <a class="navbar-brand" href="{% url 'home' %}">
               <img src="{% static 'website/img/favicon.png' %}" height="100px">
@@ -27,11 +44,11 @@
             <div class="navbar-nav-head">
               {% if user.is_authenticated %}
                <li class="nav-item no-li-display dropdown">
-               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.profile.image.url }}"></a>
+               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.perfil.image.url }}"></a>
                <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{% url 'profile' %}">Logado como <strong>{{ user.username }}</strong></a>
+                <a class="dropdown-item" href="{% url 'perfil' %}">Logado como <strong>{{ user.username }}</strong></a>
                 <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="{% url 'profile' %}">Meu perfil</a>
+               <a class="dropdown-item" href="{% url 'perfil' %}">Meu perfil</a>
 
 
                <div class="dropdown-divider"></div>
@@ -64,7 +81,7 @@
               <div class="navbar-nav">
               <a class="nav-item nav-link" href="{% url 'home' %}">SOBRE</a>
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'home' %}">MINHA ÁREA</a>
+              <a class="nav-item nav-link" href="{% url 'empresa_dashboard' %}">MEU NEGÓCIO</a>
               {% endif %}
             </div>
 
@@ -73,19 +90,8 @@
       </nav>
     
   
-      <div class="row">
-          {% if messages %}
-            {% for message in messages %}
-            <div class="container-fluid">
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
           
           
-</div>
-</div>
 {% block content %}{% endblock %}
 
 

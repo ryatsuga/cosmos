@@ -8,7 +8,7 @@ from PIL import Image
 import random
 
 
-class Profile(models.Model):
+class Perfil(models.Model):
 	UF_CHOICES = (
 		('AC', 'Acre'), 
 		('AL', 'Alagoas'),
@@ -46,17 +46,17 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
 	image = models.ImageField(_('Imagem Perfil'), default='default.jpg', upload_to='profile_pics')
 	sexo = models.CharField(_('Sexo'),max_length=1, choices=SEXO_CHOICES)
-	cpf = models.CharField(_('CPF'), max_length=11, null=False, blank=False)
+	cpf = models.CharField(_('CPF'), max_length=11, null=True, blank=False)
 	data_nascimento = models.DateField(default=timezone.now)
-	telefone = models.CharField(_('Telefone'), max_length=20, null=False, blank=True)
-	celular = models.CharField(_('Celular'), max_length=20, null=False, blank=False)
-	cep = models.CharField(_('CEP'),max_length=8, null=False, blank=False)
-	endereco = models.CharField(_('Endereço'), max_length=200, null=False, blank=False)
-	numero = models.IntegerField(_('Número'), null=False, blank=False)
-	complemento = models.CharField(_('Complemento'),max_length=30, null=False, blank=False)
-	bairro = models.CharField(_('Bairro'),max_length=100, null=False, blank=False)
-	cidade = models.CharField(_('Cidade'),max_length=100, null=False, blank=False)
-	uf = models.CharField(_('Estado'),max_length=2, null=False, blank=False, choices=UF_CHOICES, default='MG')
+	telefone = models.CharField(_('Telefone'), max_length=20, null=True, blank=True)
+	celular = models.CharField(_('Celular'), max_length=20, null=True, blank=False)
+	cep = models.CharField(_('CEP'),max_length=8, null=True, blank=False)
+	endereco = models.CharField(_('Endereço'), max_length=200, null=True, blank=False)
+	numero = models.IntegerField(_('Número'), null=True, blank=False)
+	complemento = models.CharField(_('Complemento'),max_length=30, null=True, blank=False)
+	bairro = models.CharField(_('Bairro'),max_length=100, null=True, blank=False)
+	cidade = models.CharField(_('Cidade'),max_length=100, null=True, blank=False)
+	uf = models.CharField(_('Estado'),max_length=2, null=True, blank=False, choices=UF_CHOICES, default='MG')
 	#Metadata
 	completo = models.BooleanField(_('Completo'), default=False)
 

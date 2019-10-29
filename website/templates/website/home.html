@@ -6,7 +6,12 @@
 <div class="container">
 <h1 class="titulo" style="text-align: center;">Controle de forma rápida e eficiente<br> as suas Ordens de Serviço</h1>
 <p class="banner-p" style="text-align: center; ">Com a nossa plataforma de controle de ordens de serviço, <br>você e seus clientes tem mais controle sobre o serviço!</p>
-<p style="text-align: center; "><br><a class="button btn-info btn-circle nav-link-no-decoration btn-banner" href="{% url 'register' %}">REGISTRAR</a></p>
+<p style="text-align: center; "><br>
+	{% if user.is_authenticated %}
+	<a class="button btn-info btn-circle nav-link-no-decoration btn-banner" href="{% url 'empresa_dashboard' %}">MEU NEGÓCIO</a></p>
+	{% else %}
+	<a class="button btn-info btn-circle nav-link-no-decoration btn-banner" href="{% url 'register' %}">REGISTRAR</a></p>
+	{% endif %}
 </div>
 
 {% endblock content %}

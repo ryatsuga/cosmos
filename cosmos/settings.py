@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'users.apps.UsersConfig',
     'cos.apps.CosConfig',
+    'empresa.apps.EmpresaConfig',
 ]
 
 MIDDLEWARE = [
