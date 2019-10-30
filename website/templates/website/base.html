@@ -2,37 +2,34 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- CSS --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-    <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asset">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coda+Caption:800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="{% static 'website/css/styles.min.css' %}">
     {% if title %}
-		<title>COSMOS - {{ title }}</title>
-	{% else %}
-		<title>COSMOS</title>
-	{% endif %}
+        <title>COSMOS - {{ title }}</title>
+    {% else %}
+        <title>COSMOS</title>
+    {% endif %}
 </head>
+
 <body>
-   <!-- Mensagens -->
-        <div class="row">
-          {% if messages %}
-            {% for message in messages %}
-            <div class="container-fluid">
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-              </div>
-            {% endfor %}
-          {% endif %}
-          </div>
-</div>
-          <!-- Fim Mensagens -->
+
     <header>
       <!-- Navbar Topo -->
       <nav class="navbar navbar-expand-md navbar-dark bg-navbar-head">
