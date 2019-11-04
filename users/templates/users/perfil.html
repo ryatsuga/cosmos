@@ -1,0 +1,108 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+	<div class="content-section" style="width: 700px;">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ user.perfil.image.url }}">
+			<div class="media-body">
+				<h2 class="account-heading">{{ user.perfil.nome_completo }}</h2>
+				<p class="text-secondary">@{{ user.username }}</p>
+			</div>
+		</div>
+		
+<!-- Dentro daqui vai ser os colapse -->
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Perfil
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>Nome: </b>{{ user.perfil.nome_completo }}</p>
+        <p><b>Data de nascimento: </b>{{ user.perfil.data_nascimento }}</p>
+       <p><b>Sexo: </b>{{ user.perfil.get_sexo_display }}</p>
+        <p><b>Estado Civil: </b>{{ user.perfil.get_estado_civil_display }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Contato
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>Telefone: </b>{{ user.perfil.contato1 }}</p>
+        <p><b>Celular: </b>{{ user.perfil.contato2 }}</p>
+        <p><b>E-mail: </b>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Endereço
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <p><b>CEP: </b>{{ user.perfil.cep }}</p>
+        <p><b>Endereço: </b>{{ user.perfil.endereco }}</p>
+        <p><b>Bairro: </b>{{ user.perfil.bairro }}</p>
+        <p><b>Cidade: </b>{{ user.perfil.cidade }}</p>
+        <p><b>Estado: </b>{{ user.perfil.uf }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim colapse -->
+<div><br></div>
+
+<button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#editarPerfil">
+  Editar Perfil
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="editarPerfil" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarPerfil">Editar Pefil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border_bottom mb-4"></legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}				
+			</fieldset>
+			<div class="form-group">
+				<button type="button" class="btn btn-outline-secondary btn-circle" data-dismiss="modal">Fechar</button>
+				<button class="btn btn-outline-sucess btn-circle" type='submit'>Atualizar</button>
+			</div>
+		</form>	
+    	  </div>
+   		 </div>
+		  </div>
+		</div>
+		
+	</div>
+</div>
+{% endblock content %}

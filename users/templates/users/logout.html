@@ -1,0 +1,13 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="d-flex justify-content-center bd-highlight mb-3"style="margin-top:20px" >
+<div class="column" align="center">
+<h2> Deseja acessar novamente?</h2>
+
+<a class="ml-2" href="{% url 'login' %}">Acessar Novamente</a>
+	</div>		
+</div>
+{% endblock content %}

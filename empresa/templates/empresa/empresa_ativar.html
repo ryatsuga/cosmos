@@ -1,0 +1,23 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Iniciar Empresa</h2>
+            <p class="text-center">Você ainda não cadastrou sua empresa no COSMOS, omplete os dados abaixo para ativar seu negócio:</p>
+            </div>
+            <form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ form|crispy }}					
+			</fieldset>
+			<div class="form-group" align="center">
+				<button class="btn btn-primary" type='submit'>Ativar</button>
+			</div>
+		</form>
+</div>
+</div>
+
+
+{% endblock content %}
