@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
@@ -30,16 +30,14 @@
 
 <body>
 
-    <header>
-      <!-- Navbar Topo -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-navbar-head">
-
-        <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}">
-              <img src="{% static 'website/img/favicon.png' %}" height="100px">
-            </a>
-            <div class="navbar-nav-head">
-              {% if user.is_authenticated %}
+  <div class="header-blue" style="height: 120px;">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navcol-1">
+                         <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Consultas</a></span><span style="margin-right: 8px;">|</span><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Área Associado</a></span></div>
+                </div>
+                {% if user.is_authenticated %}
                <li class="nav-item no-li-display dropdown">
                <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.perfil.image.url }}"></a>
                <div class="dropdown-menu dropdown-menu-right">
@@ -53,41 +51,13 @@
                </div>
                </li>
               {% else %}
-                <a class="button btn-outline-info btn-circle btn-border nav-link-no-decoration btn-pad" href="{% url 'login' %}">ENTRAR</a>
-                <a class="button btn-info btn-circle nav-link-no-decoration btn-pad" href="{% url 'register' %}">REGISTRAR</a>
+               <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastro</a></div>
+                </div>
               {% endif %}
-            </div>
-          </div>
-      </nav>
-      </header>
-      <!-- Navbar Auxiliar -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-navbar nav-bt-margin">
-        <div class="container">
-          <!-- Mobile Itens -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <!-- Controles esquerda -->
-              <a class="nav-item nav-link" href="{% url 'home' %}">INÍCIO</a>
-              <a class="nav-item nav-link" href="#">CONSULTAS</a>
-            </div>
-            <!-- Controles direita -->
-
-              <div class="navbar-nav">
-              <a class="nav-item nav-link" href="{% url 'home' %}">SOBRE</a>
-              {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'empresa_dashboard' %}">MEU NEGÓCIO</a>
-              {% endif %}
-            </div>
-
-          </div>
+                </div>
+              </nav>
         </div>
-      </nav>
-    
-  
-          
+     
           
 {% block content %}{% endblock %}
 
@@ -99,15 +69,34 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
 </body>
 
-<!--Footer
-<footer>
-  <div class="fw-footer">
-      <div class="skew"></div>
-        <div class="skew-bg"></div>
-          <div class="copyright">
-            <img src="{% static 'website/img/favicon_footer.png' %}" height="40px"></br>
-            Av. Dr. José Mariano, 500, Citrolândia - Betim/MG.</br>Explosão Cell Design e Criação por Leandro Passos.</br>Copyright © Explosaocell.com.br. Todos os direitos reservados.
-          </div>
-        </div>
-</footer>	-->
+<div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Serviços</h3>
+                        <ul>
+                            <li><a href="#">Gerenciamento de OSs</a></li>
+                            <li><a href="#">Gerenciamento de Empreendimento</a></li>
+                            <li><a href="#">Gerenciamento de Skateholders</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Sobre Nós</h3>
+                        <ul>
+                            <li><a href="#">Empresa</a></li>
+                            <li><a href="#">Time de Desenvolvimento</a></li>
+                            <li><a href="#">Planos Futuros</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>COSMOS</h3>
+                        <p>Prezamos a satisfação de nossos clientes de forma a nos empenharmos para sempre mantê-los satisfeitos, sempre atendendo a suas demandas diversas.&nbsp;</p>
+                    </div>
+                    <div class="col item social"><a href="https://github.com/ryatsuga/cosmos"><i class="icon ion-social-github"></i></a></div>
+                </div>
+                <p class="copyright">COSMOS © 2019 - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+    </div>
 </html>

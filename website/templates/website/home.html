@@ -38,16 +38,27 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
+          {% if user.is_authenticated %}
+          <div>
+          <a class="btn btn-light action-button" role="button" href="{% url 'services' %}" style="font-size: 20px;">Painel de Controle</a>
+          {% else %}
 
                     <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastro</a></div>
                 </div>
-                    
+            {% endif %}
             </nav>
             <div class="container hero" style="text-align: center;">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-5">
+                        {% if user.is_authenticated %}
+                        <h1 class="text-center">Bem-vindo, {{ user.perfil.nome_completo }}</h1>
+                        <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle">Explorar!</a></div>
+                        {% else %}
                         <h1 class="text-center">Aumente sua Produtividade!</h1>
-                        <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p><a class="btn btn-light btn-block btn-lg text-center btn-circle">Cadastre-se já!</a></div>
+                        <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle">Cadastre-se já!</a></div>
+                        {% endif %}
                         
                 
                 </div>
@@ -143,7 +154,7 @@
             <div class="form-group"><input class="form-control" type="text" name="nome_completo" placeholder="Nome"></div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
             <div class="form-group"><textarea class="form-control" name="mensagem" placeholder="Escreva sua mensagem" rows="14"></textarea></div>
-            <div class="form-group"><button class="btn btn-primary" type="submit">ENVIAR</button></div>
+            <div class="form-group" align="center"><button class="btn btn-primary" type="submit">ENVIAR</button></div>
         </form>
     </div>
     <div class="footer-dark">
@@ -153,17 +164,17 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Serviços</h3>
                         <ul>
-                            <li><a href="#">Gerenciamento de ordens de serviço</a></li>
-                            <li><a href="#">Gerenciamento de fornecedores</a></li>
-                            <li><a href="#">Gerenciamento de empreendimento</a></li>
+                            <li><a href="#">Gerenciamento de OSs</a></li>
+                            <li><a href="#">Gerenciamento de Empreendimento</a></li>
+                            <li><a href="#">Gerenciamento de Skateholders</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Sobre nós</h3>
+                        <h3>Sobre Nós</h3>
                         <ul>
                             <li><a href="#">Empresa</a></li>
-                            <li><a href="#">Time de desenvolvimento</a></li>
-                            <li><a href="#">Planos futuros</a></li>
+                            <li><a href="#">Time de Desenvolvimento</a></li>
+                            <li><a href="#">Planos Futuros</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 item text">

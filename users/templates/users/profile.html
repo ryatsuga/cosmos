@@ -6,9 +6,9 @@
 <div class="d-flex justify-content-center">
 	<div class="content-section" style="width: 700px;">
 		<div class="media">
-			<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+			<img class="rounded-circle account-img" src="{{ user.perfil.image.url }}">
 			<div class="media-body">
-				<h2 class="account-heading">{{ user.profile.nome_completo }}</h2>
+				<h2 class="account-heading">{{ user.perfil.nome_completo }}</h2>
 				<p class="text-secondary">@{{ user.username }}</p>
 			</div>
 		</div>
@@ -26,10 +26,10 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        <p><b>Nome: </b>{{ user.profile.nome_completo }}</p>
-        <p><b>Data de nascimento: </b>{{ user.profile.data_nascimento }}</p>
-       <p><b>Sexo: </b>{{ user.profile.get_sexo_display }}</p>
-        <p><b>Estado Civil: </b>{{ user.profile.get_estado_civil_display }}</p>
+        <p><b>Nome: </b>{{ user.perfil.nome_completo }}</p>
+        <p><b>Data de nascimento: </b>{{ user.perfil.data_nascimento }}</p>
+       <p><b>Sexo: </b>{{ user.perfil.get_sexo_display }}</p>
+        <p><b>Estado Civil: </b>{{ user.perfil.get_estado_civil_display }}</p>
       </div>
     </div>
   </div>
@@ -43,8 +43,8 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-        <p><b>Telefone: </b>{{ user.profile.contato1 }}</p>
-        <p><b>Celular: </b>{{ user.profile.contato2 }}</p>
+        <p><b>Telefone: </b>{{ user.perfil.contato1 }}</p>
+        <p><b>Celular: </b>{{ user.perfil.contato2 }}</p>
         <p><b>E-mail: </b>{{ user.email }}</p>
       </div>
     </div>
@@ -59,11 +59,11 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        <p><b>CEP: </b>{{ user.profile.cep }}</p>
-        <p><b>Endereço: </b>{{ user.profile.endereco }}</p>
-        <p><b>Bairro: </b>{{ user.profile.bairro }}</p>
-        <p><b>Cidade: </b>{{ user.profile.cidade }}</p>
-        <p><b>Estado: </b>{{ user.profile.uf }}</p>
+        <p><b>CEP: </b>{{ user.perfil.cep }}</p>
+        <p><b>Endereço: </b>{{ user.perfil.endereco }}</p>
+        <p><b>Bairro: </b>{{ user.perfil.bairro }}</p>
+        <p><b>Cidade: </b>{{ user.perfil.cidade }}</p>
+        <p><b>Estado: </b>{{ user.perfil.uf }}</p>
       </div>
     </div>
   </div>

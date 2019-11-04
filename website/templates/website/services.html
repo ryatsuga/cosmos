@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Serviços</h2>
+            <p class="text-center">Acesso aos Serviços da Cosmos.</p>
+            </div>
+			<div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-search icon"></i>
+                        <h3 class="name">Andamento Serviço</h3>
+                        <p class="text-center description">Consulte agora mesmo o andamento do serviço de manutenção de seu aparelho.</p>
+                        <button class="btn btn-primary" type="submit">Ir</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-briefcase icon"></i>
+                        <h3 class="name">Área de Trabalho</h3>
+                        <p class="text-center description">Acesse a área de gerenciamento de seu negócio ou da empresa a qual você trabalha.</p>
+                        <button class="btn btn-primary" type="submit">Ir</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-location-arrow icon"></i>
+                        <h3 class="name">Assistências Cosmos</h3>
+                        <p class="text-center description">Saiba quais Assistências Técnicas próximas de onde você mora usam o COSMOS.</p>
+                        <button class="btn btn-primary" type="submit">Ir</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
