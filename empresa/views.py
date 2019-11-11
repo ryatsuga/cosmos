@@ -44,11 +44,16 @@ def empresa_criar(request):
 	return render(request, 'empresa/empresa_ativar.html', {'form': form})
 
 
-def negocio_atualizar(request):
+def empresa_atualizar(request):
 	return 0
 
-def negocio_desativar(request):
+def empresa_desativar(request):
 	return 0
+
+def empresas(request):
+	empresas_usuario = Empresa.objects.filter(dono=request.user)
+
+	return render(request, 'empresa/empresa_lista.html', {'empresas_usuario': empresas_usuario})
 
 def colaboradores(request):
 	return 0
