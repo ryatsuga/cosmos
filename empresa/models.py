@@ -64,6 +64,9 @@ class Empresa(models.Model):
 	def __str__(self):
 		return f'{self.nome_fantasia} - {self.identificacao}'
 
+	def endereco_completo(self):
+		return f'{self.endereco}, {self.numero}, {self.bairro} - {self.cidade}/{self.uf}'
+
 class Colaborador(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Colaborador')
 	nivel = models.CharField(_('Nível'),max_length=2, null=False, blank=False, choices=NIVEL_CHOICES, default=0)

@@ -2,22 +2,28 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="features-boxed">
-	<div class="container">
+	<div class="container" align="center">
             <div class="intro">
-                <h2 class="text-center" style="font-size: 20px; margin-bottom: 20px!important">Minha(s) Assistência(s)</h2>
+                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important">Sou dono de...</h2>
             </div>
             
             <div class="row justify-content-center features">
             	{% for e in empresas_usuario %}
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
-                    <div class="box"><i class="fas fa-search icon"></i>
+                    <div class="box"><i class="fas fa-building icon"></i>
                         <h3 class="name">{{ e.nome_fantasia }}</h3>
-                        <p class="text-center description">{{ e.identificacao }}</p>
+                        <p class="text-center description">{{ e.endereco_completo }}</p>
                         <button class="btn btn-primary" type="submit">Gerir</button>
                     </div>
                 </div>
                 {% endfor %}
             </div>
+
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important; padding-top: 0px!important">Sou colaborador em...</h2>
+            </div><br>
+            
+            <p>Nenhuma empresa.</p><br><br>
 
 </div>
 </div>
