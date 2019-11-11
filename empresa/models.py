@@ -38,7 +38,8 @@ UF_CHOICES = (
 
 NIVEL_CHOICES = (
 		(0, 'Gerente'),
-		(1, 'Operador'), 
+		(1, 'Técnico'), 
+		(2, 'Operador'),
 		)
 
 class Empresa(models.Model):
@@ -69,6 +70,9 @@ class Colaborador(models.Model):
 	#Metadata
 	data = models.DateField(default=timezone.now)
 
+	def __str__(self):
+		return f'{self.user}'
+
 class Cliente(models.Model):
 	nome = models.CharField(_('Nome completo'), max_length=60, null=False, blank=False)
 	identificacao = models.CharField(_('CPF/CNPJ'), max_length=18, null=False, blank=False)
@@ -83,5 +87,24 @@ class Cliente(models.Model):
 	uf = models.CharField(_('Estado'),max_length=2, null=False, blank=False, choices=UF_CHOICES, default='MG')
 	#Metadata
 	data = models.DateField(default=timezone.now)
+
+	def __str__(self):
+		return f'{self.nome}'
+
+class EmpresaSelecionada(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
+	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa selecionada', null=True, blank=True)
+
+	def __str__(self):
+		return f'{self.empresa}'
+
+class ColaboradorConvite(models.Model):
+	convidado = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário convidado', null=True, blank=True)
+	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa', null=True, blank=True)
+
+	def __str__(self):
+		return f'{self.convidado} para ser colaborador de {self.empresa}'
+
+
 
 
