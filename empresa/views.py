@@ -47,6 +47,9 @@ def empresa_criar(request):
 def empresa_atualizar(request):
 	return 0
 
+def empresa_painel(request):
+	return render(request, 'empresa/empresa')
+
 def empresa_desativar(request):
 	return 0
 

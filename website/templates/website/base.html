@@ -39,7 +39,7 @@
                 </div>
                 {% if user.is_authenticated %}
                <li class="nav-item no-li-display dropdown">
-               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded header-acc-img" href="#" src="{{ user.perfil.image.url }}"></a>
+               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle header-acc-img" href="#" src="{{ user.perfil.image.url }}"></a>
                <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{% url 'perfil' %}">Logado como <strong>{{ user.username }}</strong></a>
                 <div class="dropdown-divider"></div>

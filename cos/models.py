@@ -15,7 +15,7 @@ def gerar_os_cod():
 	existe_no_banco = True
 	while existe_no_banco == True:
 		os_gerador = random.choice(alfa)+random.choice(num)+random.choice(alfa)+random.choice(alfa)+random.choice(num)+random.choice(num)
-		os_verifica_igual = Ordem.objects.filter(os_cod=os_gerador)
+		os_verifica_igual = Ordem.objects.filter(codigo=os_gerador)
 		if len(os_verifica_igual) <= 0:
 			return os_gerador
 
@@ -50,6 +50,6 @@ class Ordem(models.Model):
 	q_liga = models.BooleanField(_('O dispositivo liga?'), max_length=1, null=True, blank=True, default=0)
 	#Metadata
 	empresa = models.ForeignKey(Empresa, verbose_name='Empresa', on_delete=models.SET_NULL, null=True)
-	autor = models.ForeignKey(Colaborador, verbose_name='Colaborador', on_delete=models.SET_NULL, null=True)
+	autor = models.ForeignKey(User, verbose_name='Colaborador', on_delete=models.SET_NULL, null=True)
 	data = models.DateField(_('Data'),default=timezone.now)
 
