@@ -21,7 +21,7 @@ def empresa_dashboard(request):
 		else:
 			result = 1
 	except:
-		msg = 'Não funciona!'
+		msg = 'Usuário sem empresa cadastrada.'
 	finally:
 		if result == 0:
 			return render(request, 'empresa/empresa_inativa.html')
@@ -48,7 +48,7 @@ def empresa_atualizar(request):
 	return 0
 
 def empresa_painel(request):
-	return render(request, 'empresa/empresa')
+	return render(request, 'empresa/empresa_painel.html')
 
 def empresa_desativar(request):
 	return 0

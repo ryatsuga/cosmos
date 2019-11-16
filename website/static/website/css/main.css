@@ -375,3 +375,15 @@ a.btn-head-tt:hover {
   margin-top: 15px;
   color: #fff;
 }
+
+.painel-button-border {
+  margin: 8px;
+  width: 100%;
+  border-color: #ddd;
+  border-radius: 2px;
+}
+
+.painel-button-body {
+  padding: 15px;
+  font-size: 15px;
+}

@@ -2,31 +2,17 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="features-boxed">
-    <h1>Painel de Controle</h1>
-	<div class="container" align="center">
-            <div class="intro">
-                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important">Sou dono de...</h2>
-            </div>
-            
-            <div class="row justify-content-center features">
-            	{% for e in empresas_usuario %}
-                <div class="col-sm-6 col-md-5 col-lg-4 item">
-                    <div class="box"><i class="fas fa-building icon"></i>
-                        <h3 class="name">{{ e.nome_fantasia }}</h3>
-                        <p class="text-center description">Situada na {{ e.endereco_completo }}</p>
-                        <button class="btn btn-primary" type="submit">Gerir</button>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+    <div class="container" style="padding: 20px;">
+    <h1 class="border-bottom border-gray" style="font-size: 30px;">Visão Geral</h1>    
+    </div>
+	<div class="container" align="justify-content-center">
+    <h1 style="font-size: 25px;">Ações</h1>   
 
-            <div class="intro">
-                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important; padding-top: 0px!important">Sou colaborador em...</h2>
-            </div><br>
-            
-            <p>Nenhuma empresa.</p><br><br>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><div class="painel-button-border"><div class="painel-button-body"><a href="{% url 'home' %}"><i class="fas fa-plus icon"></i> Nova OS</div></a></div></div>
 
+    </div>
 </div>
+<br><br>
 </div>
 
 
