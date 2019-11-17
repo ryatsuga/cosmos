@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coda+Caption:800">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="{% static 'website/css/styles.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/styles.min.css' %}">
+
     {% if title %}
         <title>COSMOS - {{ title }}</title>
     {% else %}
@@ -28,7 +29,7 @@
     {% endif %}
 </head>
 
-<body>
+<body id="page-top">
 
   <div class="header-blue" style="height: 120px;">
             <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
@@ -67,6 +68,8 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </body>
 
 <div class="footer-dark">

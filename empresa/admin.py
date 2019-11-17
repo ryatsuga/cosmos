@@ -4,5 +4,5 @@ from .models import *
 admin.site.register(Cliente)
 admin.site.register(Colaborador)
 admin.site.register(Empresa)
-admin.site.register(EmpresaSelecionada)
+
 

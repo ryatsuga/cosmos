@@ -13,7 +13,7 @@
                     <div class="box"><i class="fas fa-building icon"></i>
                         <h3 class="name">{{ e.nome_fantasia }}</h3>
                         <p class="text-center description">Situada na {{ e.endereco_completo }}</p>
-                        <a class="btn btn-primary" href="{% url 'empresa_painel' %}">Gerir</a>
+                        <a class="btn btn-primary" href="{% url 'empresa_painel' e.id %}">Gerir</a>
                     </div>
                 </div>
                 {% endfor %}

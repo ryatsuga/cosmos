@@ -7,7 +7,7 @@ class OrdemCriarForm(forms.ModelForm):
 
 	class Meta:
 		model = Ordem
-		fields = ['valor', 'modelo']
+		fields = ['valor', 'previsao', 'marca', 'modelo', 'identificacao', 'defeito', 'observacao']
 
 class MarcaCriarForm(forms.ModelForm):
 

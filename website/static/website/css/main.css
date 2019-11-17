@@ -387,3 +387,40 @@ a.btn-head-tt:hover {
   padding: 15px;
   font-size: 15px;
 }
+
+.text-gray-300 {
+    color: #dddfeb!important;
+}
+
+.text-gray-400 {
+    color: #dddfeb!important;
+}
+
+.d-inline {
+    display: inline!important;
+}
+
+.rounded {
+    border-radius: .25rem!important;
+}
+
+.border {
+    border: 1px solid #dee2e6!important;
+}
+
+.scroll-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align: center;
+    color: #fff;
+    background: rgba(90,92,105,.5);
+    line-height: 46px;
+}
+
+.text-xs {
+    font-size: .9rem;
+}

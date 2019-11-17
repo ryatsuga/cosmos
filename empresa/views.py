@@ -12,6 +12,8 @@ from django.views.generic import (
 	)
 from .forms import *
 from .models import *
+from users.models import Controle
+from cos.models import Ordem
 
 def empresa_dashboard(request):
 	result = 0
@@ -37,7 +39,7 @@ def empresa_criar(request):
 			form.instance.ativo = True
 			form.save()
 			messages.success(request, f'Empreendimento cadastrado com sucesso!')
-			return redirect('home')
+			return redirect('empresa_list')
 	else:
 		form=EmpresaCriarForm()
 
@@ -47,8 +49,17 @@ def empresa_criar(request):
 def empresa_atualizar(request):
 	return 0
 
-def empresa_painel(request):
-	return render(request, 'empresa/empresa_painel.html')
+def empresa_painel(request, pk):
+	#Seleciona empresa para tarefas
+	empresa = Empresa.objects.get(pk=pk)
+	Controle.objects.filter(user=request.user).update(empresa_selecionada=empresa)
+	#Seleciona OSs da empresa
+	ordens = Ordem.objects.filter(empresa=empresa)
+	colaboradores = Colaborador.objects.filter(empresa=empresa)
+
+	cxt={'ordens':ordens, 'colaboradores':colaboradores}
+
+	return render(request, 'empresa/empresa_painel.html', cxt)
 
 def empresa_desativar(request):
 	return 0
@@ -63,6 +74,20 @@ def colaboradores(request):
 
 def clientes(request):
 	return 0
+
+def cliente_criar(request):
+	if request.method =='POST':
+		form=ClienteForm(request.POST)
+		if form.is_valid():
+			form.instance.vinculo = request.user.empresa
+			form.instance.ativo = True
+			form.save()
+			messages.success(request, f'Cliente cadastrado com sucesso!')
+			return redirect('services')
+	else:
+		form=ClienteForm()
+
+	return render(request, 'empresa/cliente_criar.html', {'form': form})
 
 
 

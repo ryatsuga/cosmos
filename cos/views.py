@@ -23,6 +23,7 @@ def marca_criar(request):
 	if request.method =='POST':
 		form=MarcaCriarForm(request.POST)
 		if form.is_valid():
+			form.instance.empresa = request.user.empresa
 			form.save()
 			messages.success(request, f'Marca cadastrada com sucesso!')
 			return redirect('home')
@@ -42,12 +43,13 @@ def nova_ordem(request):
 
 		cliente = Cliente.objects.get(identificacao=cid)
 		empresa = Empresa.objects.get(dono=request.user)
-		form=OrdemCriarForm()
-		return render(request, 'cos/ordem_criar.html', {'cliente': cliente, 'empresa': empresa,'form': form})
+		marcas = Marca.objects.filter(empresa=request.user.empresa)
+		data_context = {'cliente': cliente, 'empresa': empresa, 'marcas': marcas}
+		return ordem_criar(request, dcxt=data_context)
 
-def ordem_criar(request):
+def ordem_criar(request, dcxt = None):
 	if request.method =='POST':
-		form=OrdemCriarForm(request.POST)
+		form=OrdemCriarForm()
 		if form.is_valid():
 			form.instance.autor = request.user
 			form.instance.empresa = empresa
@@ -58,4 +60,5 @@ def ordem_criar(request):
 	else:
 		form=OrdemCriarForm()
 
-	return render(request, 'cos/ordem_criar.html', {'form': form})
+	dcxt['form']= form
+	return render(request, 'cos/ordem_criar.html', dcxt)

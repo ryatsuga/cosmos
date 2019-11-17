@@ -71,6 +71,7 @@ class Colaborador(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Colaborador')
 	nivel = models.CharField(_('Nível'),max_length=2, null=False, blank=False, choices=NIVEL_CHOICES, default=0)
 	#Metadata
+	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa', null=True, blank=True)
 	data = models.DateField(default=timezone.now)
 
 	def __str__(self):
@@ -94,13 +95,6 @@ class Cliente(models.Model):
 
 	def __str__(self):
 		return f'{self.nome}'
-
-class EmpresaSelecionada(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
-	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa selecionada', null=True, blank=True)
-
-	def __str__(self):
-		return f'{self.empresa}'
 
 class ColaboradorConvite(models.Model):
 	convidado = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário convidado', null=True, blank=True)

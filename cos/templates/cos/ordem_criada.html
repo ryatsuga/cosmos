@@ -1,0 +1,13 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+  <div class="alert alert-success" role="alert">
+    <h2 class="alert-heading">Pedido realizado com sucesso!</h2>
+    <a class="btn btn-primary" href="{% url 'nova_ordem' %}" role="button">Continuar</a>
+  </div>
+</div>
+
+{% endblock content %}
