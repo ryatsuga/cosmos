@@ -9,6 +9,7 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                         <h3 class="text-dark mb-0">Visão Geral</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Gerar Relatório</a></div>
+                       <!-- Faturamento Cards -->
                     <div class="row">
                     	<div class="col-md-6 col-xl-3 mb-4">
                             <div class="card  border-left-success py-2">
@@ -23,7 +24,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card  border-left-primary py-2">
                                 <div class="card-body">
@@ -69,28 +70,53 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+
+                    <!-- Painel Gerenciamento Cards -->
+                    <div class="row" align="center">
                         <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card  border-left-primary py-2">
+                            <div class="card py-2">
+                                <div class="card-body">
+                                	<i class="fab fa-stack-exchange fa-4x text-gray-300"></i><br><br>
+                                	<h6 class="text-primary font-weight-bold m-0">CONTROLE DE ORDENS DE SERVIÇO</h6><br>
+
+                                	<ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                            <div class="col mr-2">
+                                            	<a class="btn" href="{% url 'nova_ordem' %}">Nova OS</a>
+                                            </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                            	<a class="btn" href="{% url 'nova_ordem' %}">Listar Ordens de Serviço</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card py-2">
                                 <div class="card-body"></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card  border-left-success py-2">
+                            <div class="card py-2">
                                 <div class="card-body"></div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card  border-left-info py-2">
-                                <div class="card-body"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card  border-left-warning py-2">
+                            <div class="card py-2">
                                 <div class="card-body"></div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Chat Faturamento Card -->
                     <div class="row">
                         <div class="col">
                             <div class="card  mb-4">
