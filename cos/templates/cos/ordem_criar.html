@@ -7,6 +7,7 @@
                 <h2 class="text-center" style="font-size: 30px;">Cadastrar Ordem de Serviço</h2>
             <p class="text-center">Insira os dados abaixo para cadastrar a Ordem de Serviço:</p>
             </div>
+            <p>{{ empresa.nome_fantasia }} |{{ cliente.nome }}</p>
             <form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">

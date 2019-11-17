@@ -12,6 +12,8 @@ from django.views.generic import (
 	)
 from .forms import *
 from .models import *
+from empresa.models import *
+
 
 def ordens(request):
 	ordens = Ordem.objects.filter(autor=request.user)
@@ -27,13 +29,29 @@ def marca_criar(request):
 	else:
 		form=MarcaCriarForm()
 
-	return render(request, 'cos/ordem_criar.html', {'form': form})
+	return render(request, 'cos/marca_criar.html', {'form': form})
+
+def nova_ordem(request):
+	if request.method == 'GET':
+		clientes = Cliente.objects.all()
+		return render(request, 'cos/nova_ordem.html', {'clientes': clientes})
+	else:
+		cid = request.POST.get('clienteID', None)
+		if cid == '':
+			cid='00000000000'
+
+		cliente = Cliente.objects.get(identificacao=cid)
+		empresa = Empresa.objects.get(dono=request.user)
+		form=OrdemCriarForm()
+		return render(request, 'cos/ordem_criar.html', {'cliente': cliente, 'empresa': empresa,'form': form})
 
 def ordem_criar(request):
 	if request.method =='POST':
 		form=OrdemCriarForm(request.POST)
 		if form.is_valid():
 			form.instance.autor = request.user
+			form.instance.empresa = empresa
+			form.instance.cliente = cliente
 			form.save()
 			messages.success(request, f'Ordem de Serviço cadastrada com sucesso!')
 			return redirect('ordem_lista')

@@ -90,6 +90,7 @@ class Cliente(models.Model):
 	uf = models.CharField(_('Estado'),max_length=2, null=False, blank=False, choices=UF_CHOICES, default='MG')
 	#Metadata
 	data = models.DateField(default=timezone.now)
+	vinculo = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Vinculado a', null=True, blank=False)
 
 	def __str__(self):
 		return f'{self.nome}'
