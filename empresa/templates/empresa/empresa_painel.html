@@ -1,0 +1,194 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="features-boxed" style="padding-top: 30px;">
+<div class="container-fluid" style="max-width: 1500px;">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Visão Geral</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Gerar Relatório</a></div>
+                       <!-- Faturamento Cards -->
+                    <div class="row">
+                    	<div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card  border-left-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>FATURAMENTO (DIÁRIO)</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>R$ 0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card  border-left-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>FATURAMENTO (MENSAL)</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>R$ 0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card  border-left-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>ORDENS DE SERVIÇO ATIVAS</span></div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>18</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card  border-left-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>ORÇAMENTOS PENDENTES</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Painel Gerenciamento Cards -->
+                    <div class="row" align="center">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card py-2">
+                                <div class="card-body">
+                                	<i class="fab fa-stack-exchange fa-4x text-gray-300"></i><br><br>
+                                	<h6 class="text-primary font-weight-bold m-0">CONTROLE DE ORDENS DE SERVIÇO</h6><br>
+
+                                	<ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                            <div class="col mr-2">
+                                            	<a class="btn" href="{% url 'nova_ordem' %}">Nova OS</a>
+                                            </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                            	<a class="btn" href="{% url 'nova_ordem' %}">Listar Ordens de Serviço</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card py-2">
+                                <div class="card-body"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card py-2">
+                                <div class="card-body"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card py-2">
+                                <div class="card-body"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Faturamento Card -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card  mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary font-weight-bold m-0">Visão Faturamento</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+                                            role="menu">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card  mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Colaboradores</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0"><strong>Leandro{{ empresa.dono }}</strong></h6><span class="text-xs">Dono</span></div>
+                                            <div class="col-auto">
+		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card  mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Ordens de Serviço Recentes</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                	{% for o in ordens %}
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0"><strong>OS {{ o }}</strong></h6><span class="text-xs">Início: {{ o.data|date:"d/m/Y"}} / Previsão término: {{ o.previsao|date:"d/m/Y" }}</span></div>
+                                            <div class="col-auto">
+		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Imprimir</a>
+		                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Atualizar</a></div>
+		                                    		</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+</div>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'empresa/js/chart.min.js' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'empresa/js/script.min.js' %}">
+{% endblock content %}

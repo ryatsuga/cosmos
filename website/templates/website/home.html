@@ -29,18 +29,18 @@
     {% endif %}
 </head>
 
-<body>
+<body id="page-top">
     <div>
         <div class="header-blue">
             <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-                <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a>
+                <div class="container"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           {% if user.is_authenticated %}
           <div>
-          <a class="btn btn-light action-button" role="button" href="{% url 'perfil' %}" style="font-size: 20px;">Meu Perfil</a>
+          <a class="btn btn-light action-button" role="button" href="{% url 'services' %}" style="font-size: 20px;">Painel de Controle</a>
           {% else %}
 
                     <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastro</a></div>
@@ -53,11 +53,11 @@
                         {% if user.is_authenticated %}
                         <h1 class="text-center">Bem-vindo, {{ user.perfil.nome_completo }}</h1>
                         <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
-                        <a class="btn btn-light btn-block btn-lg text-center btn-circle" href="{% url 'services' %}">Explorar!</a></div>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle" href="{% url 'perfil' %}">Atualize seu perfil aqui!</a></div>
                         {% else %}
                         <h1 class="text-center">Aumente sua Produtividade!</h1>
                         <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
-                        <a class="btn btn-light btn-block btn-lg text-center btn-circle" href="{% url 'register' %}">Cadastre-se já!</a></div>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle">Cadastre-se já!</a></div>
                         {% endif %}
                         
                 
@@ -66,9 +66,7 @@
         </div>
     </div>
 
-
     {% if user.is_authenticated %}
-
     <div class="footer-dark">
         <footer>
             <div class="container">
@@ -98,16 +96,15 @@
                 <p class="copyright">COSMOS © 2019 - Todos os Direitos Reservados</p>
             </div>
         </footer>
-    </div>
+    </div>  
+   
 
-
-    {% else %}
-
+   {% else %}
     <div class="features-boxed">
         <div class="container">
             <div class="intro">
                 <h2 class="text-center" style="font-size: 30px;">Serviços</h2>
-                <p class="text-center">O COSMOS oferece uma plataforma web responsiva para a gestão de seu empreendimento de manutenção de disposivos.</p>
+                <p class="text-center">O Cosmos oferece uma plataforma web responsiva para a gestão de seu empreendimento de manutenção de disposivos.</p>
             </div>
             <div class="row justify-content-center features">
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
@@ -125,25 +122,25 @@
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="fa fa-cart-plus icon"></i>
                         <h3 class="name">Gestão de Fornecedores</h3>
-                        <p class="text-center description">Cansado dos problemas relacionados aos dados de seus fornecedores? Deixe que o COSMOS cuide disso para você!</p>
+                        <p class="text-center description">Cansado dos problemas relacionados aos dados de seus fornecedores? Deixe que o Cosmos cuide disso para você!</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="fa fa-list-alt icon"></i>
-                        <h3 class="name">Gestão de OSs</h3>
+                        <h3 class="name">Gestão de Ordens de Serviço</h3>
                         <p class="text-center description">Monitore em tempo real o andamento de suas Ordens de Serviço e obtenha informações completas desde o funcionário responsável ao prazo de entrega.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="fas fa-desktop icon"></i>
                         <h3 class="name">Responsividade</h3>
-                        <p class="text-center description">Gerencie seu Negócio através da Internet! O COSMOS é compatível com a maioria dos dispositivos Mobile e Desktop.&nbsp;</p>
+                        <p class="text-center description">Gerencie seu Negócio através da Internet! O Cosmos é compatível com a maioria dos dispositivos Mobile e Desktop.&nbsp;</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="far fa-smile icon"></i>
-                        <h3 class="name">Interação Negócio-Cliente</h3>
-                        <p class="text-center description">Mantenha o Cliente sempre informado sobre o seus Serviços em Andamento!</p>
+                        <h3 class="name">Interação Assistência-Cliente</h3>
+                        <p class="text-center description">Mantenha o Cliente sempre informado sobre o seus Serviços de Manutenção em Andamento!</p>
                     </div>
                 </div>
             </div>
@@ -225,8 +222,10 @@
             </div>
         </footer>
     </div>
-    {% endif %}
    
+   <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+   {% endif %}
+
 </body>
 
 </html>

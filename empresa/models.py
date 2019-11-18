@@ -38,7 +38,8 @@ UF_CHOICES = (
 
 NIVEL_CHOICES = (
 		(0, 'Gerente'),
-		(1, 'Operador'), 
+		(1, 'Técnico'), 
+		(2, 'Operador'),
 		)
 
 class Empresa(models.Model):
@@ -63,11 +64,18 @@ class Empresa(models.Model):
 	def __str__(self):
 		return f'{self.nome_fantasia} - {self.identificacao}'
 
+	def endereco_completo(self):
+		return f'{self.endereco}, {self.numero}, {self.bairro} - {self.cidade}/{self.uf}'
+
 class Colaborador(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Colaborador')
 	nivel = models.CharField(_('Nível'),max_length=2, null=False, blank=False, choices=NIVEL_CHOICES, default=0)
 	#Metadata
+	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa', null=True, blank=True)
 	data = models.DateField(default=timezone.now)
+
+	def __str__(self):
+		return f'{self.user}'
 
 class Cliente(models.Model):
 	nome = models.CharField(_('Nome completo'), max_length=60, null=False, blank=False)
@@ -83,5 +91,18 @@ class Cliente(models.Model):
 	uf = models.CharField(_('Estado'),max_length=2, null=False, blank=False, choices=UF_CHOICES, default='MG')
 	#Metadata
 	data = models.DateField(default=timezone.now)
+	vinculo = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Vinculado a', null=True, blank=False)
+
+	def __str__(self):
+		return f'{self.nome}'
+
+class ColaboradorConvite(models.Model):
+	convidado = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário convidado', null=True, blank=True)
+	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa', null=True, blank=True)
+
+	def __str__(self):
+		return f'{self.convidado} para ser colaborador de {self.empresa}'
+
+
 
 

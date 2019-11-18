@@ -19,16 +19,20 @@
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="fas fa-briefcase icon"></i>
                         <h3 class="name">Área de Trabalho</h3>
-                        <p class="text-center description">Acesse a área de gerenciamento de seu negócio ou da empresa a qual você trabalha.</p>
-                        <button class="btn btn-primary" type="submit">Ir</button>
+                        <p class="text-center description">Acesse a área de trabalho de seu negócio ou da empresa a qual você trabalha.</p>
+                        {% if empresas_usuario is valid %}                        
+                        <a class="btn btn-primary" href="{% url 'empresa_lista' %}">Ir</a>
+                        {% else %}
+                        <a class="btn btn-primary" href="{% url 'empresa_inativa' %}">Ir</a>
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div class="box"><i class="fas fa-location-arrow icon"></i>
                         <h3 class="name">Assistências Cosmos</h3>
-                        <p class="text-center description">Saiba quais Assistências Técnicas próximas de onde você mora usam o COSMOS.</p>
-                        <button class="btn btn-primary" type="submit">Ir</button>
+                        <p class="text-center description">Saiba quais Assistências Técnicas próximas de onde você mora usam o Cosmos.</p>
+                        <a class="btn btn-primary" href="{% url 'mapa' %}">Ir</a>
                     </div>
             </div>
         </div>

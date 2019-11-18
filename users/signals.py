@@ -13,3 +13,13 @@ def create_perfil(sender, instance, created, **kwargs):
 def save_perfil(sender, instance, created, **kwargs):
 	instance.perfil.save()
 
+@receiver(post_save, sender=User)
+def create_controle(sender, instance, created, **kwargs):
+	if created:
+		Controle.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_controle(sender, instance, created, **kwargs):
+	instance.controle.save()
+
+

@@ -1,0 +1,25 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Cadastrar Ordem de Serviço</h2>
+            <p class="text-center">Insira os dados abaixo para cadastrar a OS:</p>
+            </div>
+            <h2 class="text-center" style="font-size: 18px;">{{ empresa.nome_fantasia }} | {{ cliente.nome }} <a class="btn" href="{% url 'nova_ordem' %}"><i class="fas fa-exchange-alt"></i></a></h2> 
+            <form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ form|crispy }}					
+			</fieldset>
+			<div class="form-group" align="center">
+				<button class="btn btn-primary" type='submit'>Cadastrar</button>
+			</div>
+			<br>
+		</form>
+</div>
+</div>
+
+
+{% endblock content %}

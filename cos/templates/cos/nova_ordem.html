@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="features-boxed">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Nova OS</h2>
+            <p class="text-center">Crie uma OS para um novo cliente ou para um cliente já existente.</p>
+            </div><br><br>
+           
+        <div class="container" style="max-width: 800px;">
+	    <form action="#" method="POST"> {% csrf_token %}
+	      <div class="input-group mb-3" >
+	        <div class="input-group-prepend">
+	          <span class="input-group-text" id="basic-addon1">Digite o CPF/CNPJ do Cliente: </span>
+	        </div>
+	          <input class="form-control" type="clienteID" name="clienteID" placeholder="CPF/CNPJ" style="height: auto;" />
+	        <div class="input-group-append">
+	          <button class="btn btn-primary" type="submit">Ir &raquo;</button>
+	        </div>
+	      </div>
+	    </form>
+	    <div class="border-top pt-3">
+			<small class="text-muted">
+				Cliente não cadastrado? <a class="ml-2" href="{% url 'cliente_criar' %}">Cadastre o cliente aqui</a>
+			</small>			
+		</div>
+
+	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+	</div>
+</div>
+
+{% endblock content %}

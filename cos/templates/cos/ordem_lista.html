@@ -1,0 +1,11 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h2>Lista de OS</h2>
+
+{% for o in ordens %}
+<p>{{ o.codigo }} / Data: {{ o.data }}</p> 
+{% endfor %}
+
+{% endblock content %}

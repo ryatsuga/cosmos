@@ -2,23 +2,30 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="d-flex justify-content-center">
-	<div class="content-section" style="width: 700px; margin-top: 20px;">
+<div class="features-boxed" align="center">
+	<div class="container">
 		<form method="POST">
+			<div style="max-width: 500px; text-align: left;">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<legend class="border_bottom mb-4">Cadastre-se agora mesmo!</legend>
-				{{ form|crispy }}					
+				<div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Cadastre-se!</h2>
+            <p class="text-center">Realize o seu cadastro para ter acesso as funcionalidades da nossa plataforma.</p>
+            </div>
+				{{ form|crispy }}	
+				</div>				
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-primary" type='submit'>Cadastrar</button>
-			</div>
+			
+		</div>
 		</form>
 		<div class="border-top pt-3">
 			<small class="text-muted">
-				Já tem uma conta? <a class="ml-2" href="{% url 'login' %}">Entrar</a>
+				Já tem uma conta? <a class="ml-2" href="{% url 'login' %}">Entrar</a><br><br>
 			</small>
-		</div>
-	</div>
+
+</div>
+</div>
 </div>
 {% endblock content %}

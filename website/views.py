@@ -5,3 +5,6 @@ def home(request):
 
 def services(request):
 	return render(request, 'website/services.html')
+
+def mapa(request):
+	return render(request, 'website/mapa.html')

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import PermissionsMixin
 from PIL import Image
 import random
+from empresa.models import Empresa
 
 
 class Perfil(models.Model):
@@ -78,3 +79,18 @@ class Perfil(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.image.path)
 
+
+class Controle(models.Model):
+	PLANO_CHOICES = (
+		(0, 'Gratuito'),
+		(1, 'Premium'),
+	)
+	plano = models.IntegerField(_('Plano'), default=0, choices=PLANO_CHOICES)
+	empresa_selecionada = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa selecionada', null=True, blank=False)
+	limite_empresas = models.IntegerField(_('Limite empresas'), null=False, blank=False, default = 1)
+	limite_colaboradores = models.IntegerField(_('Limite colaboradores'), null=False, blank=False, default = 5)
+	#User
+	user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
+
+	def __str__(self):
+		return f'Plano {self.plano}'
