@@ -36,6 +36,7 @@ def nova_ordem(request):
 	if request.method == 'GET':
 		clientes = Cliente.objects.all()
 		return render(request, 'cos/nova_ordem.html', {'clientes': clientes})
+	#elif request.POST['action'] == 'consultaPorId':
 	else:
 		cid = request.POST.get('clienteID', None)
 		if cid == '':
@@ -43,13 +44,17 @@ def nova_ordem(request):
 
 		cliente = Cliente.objects.get(identificacao=cid)
 		empresa = Empresa.objects.get(dono=request.user)
-		marcas = Marca.objects.filter(empresa=request.user.empresa)
-		data_context = {'cliente': cliente, 'empresa': empresa, 'marcas': marcas}
-		return ordem_criar(request, dcxt=data_context)
 
-def ordem_criar(request, dcxt = None):
+		request.session['cliente'] = cliente.id
+		request.session['empresa'] = empresa.id
+
+		return redirect('ordem_criar')
+
+def ordem_criar(request):
+	cliente = Cliente.objects.get(pk=request.session['cliente'])
+	empresa = Empresa.objects.get(pk=request.session['empresa'])
 	if request.method =='POST':
-		form=OrdemCriarForm()
+		form=OrdemCriarForm(request.POST)
 		if form.is_valid():
 			form.instance.autor = request.user
 			form.instance.empresa = empresa
@@ -60,5 +65,8 @@ def ordem_criar(request, dcxt = None):
 	else:
 		form=OrdemCriarForm()
 
-	dcxt['form']= form
-	return render(request, 'cos/ordem_criar.html', dcxt)
+	cxt= {}
+	cxt['form']= form
+	cxt['cliente']= cliente
+	cxt['empresa']= empresa
+	return render(request, 'cos/ordem_criar.html', cxt)
