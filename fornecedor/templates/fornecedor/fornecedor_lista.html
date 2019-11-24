@@ -1,0 +1,25 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+	<div class="container" align="center">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important">Meus Fornecedores</h2>
+            </div>
+            
+            <div class="row justify-content-center features">
+            	{% for f in fornecedores %}
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-building icon"></i>
+                        <h3 class="name">{{ f.nome_fantasia }}</h3>
+                        <p class="text-center description">Situada na {{f.endereco_completo }}</p>
+                        <a class="btn btn-primary" href="{% url 'fornecedor_painel' f.id %}">Gerir</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>            
+</div>
+</div>
+
+
+{% endblock content %}

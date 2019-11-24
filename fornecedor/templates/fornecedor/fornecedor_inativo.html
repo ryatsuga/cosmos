@@ -1,0 +1,12 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+<h1 class="titulo" style="text-align: center;">Cadastrar Fornecedor</h1>
+<p class="banner-p" style="text-align: center; ">Você ainda não cadastrou seu fornecedor no Cosmos, clique no botão abaixo para realizar o cadastro.</p>
+<p style="text-align: center; "><br><a class="button btn-primary" href="{% url 'empresa_criar' %}">INICIAR FORNECEDOR</a></p>
+</div>
+
+{% endblock content %}

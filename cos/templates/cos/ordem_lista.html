@@ -1,11 +1,80 @@
 {% extends "website/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<br>
+<div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card  mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Colaborador</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0"><strong>Leandro{{ empresa.dono }}</strong></h6><span class="text-xs">Dono</span></div>
+                                            <div class="col-auto">
+		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
 
-<h2>Lista de OS</h2>
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Ordens de Serviço</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                	{% for o in ordens %}
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0"><strong>OS {{ o }}</strong></h6><span class="text-xs">Início: {{ o.data|date:"d/m/Y"}} / Previsão término: {{ o.previsao|date:"d/m/Y" }}</span></div>
+                                            <div class="col-auto">
+		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Imprimir</a>
+		                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Atualizar</a></div>
+		                                    		</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
 
-{% for o in ordens %}
-<p>{{ o.codigo }} / Data: {{ o.data }}</p> 
-{% endfor %}
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <div class="card  mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Ordens de Serviço Recentes</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                	{% for o in ordens %}
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0"><strong>OS {{ o }}</strong></h6><span class="text-xs">Início: {{ o.data|date:"d/m/Y"}} / Previsão término: {{ o.previsao|date:"d/m/Y" }}</span></div>
+                                            <div class="col-auto">
+		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Imprimir</a>
+		                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Atualizar</a></div>
+		                                    		</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>                  
+                    
+                    </div>
 
 {% endblock content %}
