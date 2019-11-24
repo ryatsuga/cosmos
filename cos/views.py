@@ -16,7 +16,7 @@ from empresa.models import *
 
 
 def ordens(request):
-	ordens = Ordem.objects.filter(autor=request.user)
+	ordens = request.user.controle.ordens_todas
 	return render(request, 'cos/ordem_lista.html', {'ordens': ordens})
 
 def marca_criar(request):

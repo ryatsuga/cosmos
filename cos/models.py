@@ -42,7 +42,7 @@ class Ordem(models.Model):
 	cliente = models.ForeignKey(Cliente, verbose_name='Cliente', on_delete=models.SET_NULL, null=True)
 	valor = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 	#Dados situação
-	status = models.IntegerField(_('Status'), max_length=1, null=False, blank=False, default=0, choices=STATUS_CHOICES,)
+	status = models.IntegerField(_('Status'), null=False, blank=False, default=0, choices=STATUS_CHOICES,)
 	previsao = models.DateTimeField(_('Previsão Entrega'),default=timezone.now)
 	#Dados dispositivo
 	marca = models.ForeignKey(Marca, verbose_name='Marca', on_delete=models.SET_NULL, null=True)

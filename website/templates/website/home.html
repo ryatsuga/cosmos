@@ -40,7 +40,7 @@
           </button>
           {% if user.is_authenticated %}
           <div>
-          <a class="btn btn-light action-button" role="button" href="{% url 'services' %}" style="font-size: 20px;">Painel de Controle</a>
+          <a class="btn btn-light action-button" role="button" href="{% url 'empresa_lista' %}" style="font-size: 20px;">Painel de Controle</a>
           {% else %}
 
                     <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastro</a></div>
@@ -53,7 +53,7 @@
                         {% if user.is_authenticated %}
                         <h1 class="text-center">Bem-vindo, {{ user.perfil.nome_completo }}</h1>
                         <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
-                        <a class="btn btn-light btn-block btn-lg text-center btn-circle">Explorar!</a></div>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle" href="{% url 'services' %}">Explorar!</a></div>
                         {% else %}
                         <h1 class="text-center">Aumente sua Produtividade!</h1>
                         <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>

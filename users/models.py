@@ -7,6 +7,7 @@ from django.contrib.auth.models import PermissionsMixin
 from PIL import Image
 import random
 from empresa.models import Empresa
+from cos.models import Ordem
 
 
 class Perfil(models.Model):
@@ -94,3 +95,10 @@ class Controle(models.Model):
 
 	def __str__(self):
 		return f'Plano {self.plano}'
+
+	def ordens_todas(self):
+		ordens = Ordem.objects.filter(empresa=self.empresa_selecionada)
+		return ordens
+
+
+
