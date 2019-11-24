@@ -26,7 +26,7 @@ class ClienteForm(forms.ModelForm):
 
 	class Meta:
 		model = Cliente
-		fields = ['nome', 'identificacao', 
+		fields = ['nome', 
 		'telefone', 'celular',
 		'email', 'cep',
 		'endereco', 'numero',

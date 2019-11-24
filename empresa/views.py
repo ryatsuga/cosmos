@@ -80,14 +80,27 @@ def cliente_criar(request):
 		form=ClienteForm(request.POST)
 		if form.is_valid():
 			form.instance.vinculo = request.user.empresa
+			form.instance.identificacao = request.session['cid']
 			form.instance.ativo = True
 			form.save()
 			messages.success(request, f'Cliente cadastrado com sucesso!')
-			return redirect('services')
+
+			cliente = Cliente.objects.get(identificacao=request.session['cid'])
+			empresa = Empresa.objects.get(pk=request.user.controle.empresa_selecionada.pk)
+
+			request.session['cliente'] = cliente.id
+			request.session['empresa'] = empresa.id
+
+			return redirect('ordem_criar')
 	else:
 		form=ClienteForm()
+		cid = request.session['cid']
+		if len(cid) < 12:
+			cid = '{}.{}.{}-{}'.format(cid[:3], cid[3:6], cid[6:9], cid[9:])
+		else:
+			cid = '{}.{}.{}/{}-{}'.format(cid[:2], cid[2:5], cid[5:8], cid[8:12], cid [12:])
 
-	return render(request, 'empresa/cliente_criar.html', {'form': form})
+	return render(request, 'empresa/cliente_criar.html', {'form': form, 'cid': cid})
 
 
 

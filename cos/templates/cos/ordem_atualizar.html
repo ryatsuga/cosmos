@@ -1,0 +1,25 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Atualizar Ordem de Serviço</h2>
+            <p class="text-center">Insira os dados abaixo para atualizar a OS:</p>
+            </div>
+            <h2 class="text-center" style="font-size: 18px;">{{ object.cliente }} | {{ object.empresa.nome_fantasia }} </h2> 
+            <form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ form|crispy }}					
+			</fieldset>
+			<div class="form-group" align="center">
+				<button class="btn btn-primary" type='submit' name="action" value="novaOrdem" >Cadastrar</button>
+			</div>
+			<br>
+		</form>
+</div>
+</div>
+
+
+{% endblock content %}

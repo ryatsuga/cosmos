@@ -79,7 +79,7 @@ class Colaborador(models.Model):
 
 class Cliente(models.Model):
 	nome = models.CharField(_('Nome completo'), max_length=60, null=False, blank=False)
-	identificacao = models.CharField(_('CPF/CNPJ'), max_length=18, null=False, blank=False)
+	identificacao = models.CharField(_('CPF/CNPJ'), max_length=14, null=False, blank=False)
 	telefone = models.CharField(_('Telefone'), max_length=20, null=False, blank=True)
 	celular = models.CharField(_('Celular'), max_length=20, null=False, blank=False)
 	cep = models.CharField(_('CEP'),max_length=8, null=False, blank=False)

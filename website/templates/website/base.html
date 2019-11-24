@@ -36,7 +36,7 @@
                 <div class="container"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div
                         class="collapse navbar-collapse" id="navcol-1">
-                         <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Consultas</a></span><span style="margin-right: 8px;">|</span><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Área Associado</a></span></div>
+                         <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'home' %}" style="font-size: 20px;">Consultas</a></span><span style="margin-right: 8px;">|</span><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'empresa_lista' %}" style="font-size: 20px;">Área Associado</a></span></div>
                 </div>
                 {% if user.is_authenticated %}
                <li class="nav-item no-li-display dropdown">

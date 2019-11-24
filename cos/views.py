@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
 	ListView, 
 	DetailView, 
@@ -13,6 +14,7 @@ from django.views.generic import (
 from .forms import *
 from .models import *
 from empresa.models import *
+
 
 
 def ordens(request):
@@ -42,13 +44,20 @@ def nova_ordem(request):
 		if cid == '':
 			cid='00000000000'
 
-		cliente = Cliente.objects.get(identificacao=cid)
-		empresa = Empresa.objects.get(dono=request.user)
+		if Cliente.objects.filter(identificacao=cid, vinculo=request.user.controle.empresa_selecionada):
 
-		request.session['cliente'] = cliente.id
-		request.session['empresa'] = empresa.id
+			cliente = Cliente.objects.get(identificacao=cid)
+			empresa = Empresa.objects.get(pk=request.user.controle.empresa_selecionada.pk)
 
-		return redirect('ordem_criar')
+			request.session['cliente'] = cliente.id
+			request.session['empresa'] = empresa.id
+
+			return redirect('ordem_criar')
+
+		else:
+			request.session['cid'] = cid
+			return redirect('cliente_criar')
+
 
 def ordem_criar(request):
 	cliente = Cliente.objects.get(pk=request.session['cliente'])
@@ -70,3 +79,47 @@ def ordem_criar(request):
 	cxt['cliente']= cliente
 	cxt['empresa']= empresa
 	return render(request, 'cos/ordem_criar.html', cxt)
+
+class OrdemRemover(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Ordem
+	template_name = 'cos/ordem_remover.html'
+
+	def test_func(self):
+		if self.request.user == self.request.user.empresa.dono:
+			return True
+		if Colaborador.objects.get(user=self.request.user):
+			return True
+		return False
+
+	def get_success_url(self):
+		return reverse('ordem_lista')
+
+class OrdemAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = Ordem
+	form_class = OrdemAtualizarForm
+	template_name = 'cos/ordem_atualizar.html'
+
+	def test_func(self):
+		if self.request.user == self.request.user.empresa.dono:
+			return True
+		if Colaborador.objects.get(user=self.request.user):
+			return True
+		return False
+
+	def get_success_url(self):
+		return reverse('ordem_lista')
+
+class OrdemStatusAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = Ordem
+	form_class = OrdemStatusAtualizarForm
+	template_name = 'cos/ordem_status_atualizar.html'
+
+	def test_func(self):
+		if self.request.user == self.request.user.empresa.dono:
+			return True
+		if Colaborador.objects.get(user=self.request.user):
+			return True
+		return False
+
+	def get_success_url(self):
+		return reverse('ordem_lista')

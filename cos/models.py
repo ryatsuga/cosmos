@@ -31,7 +31,7 @@ STATUS_CHOICES = (
 class Marca(models.Model):
 	nome=models.CharField(_('Nome'), max_length=30)
 	#Metadata
-	empresa = models.ForeignKey(Empresa, verbose_name='Empresa', on_delete=models.SET_NULL, null=True)
+	#empresa = models.ForeignKey(Empresa, verbose_name='Empresa', on_delete=models.SET_NULL, null=True)
 
 	def __str__(self):
 		return f'{self.nome}'
