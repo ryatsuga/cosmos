@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -117,9 +118,20 @@ class OrdemStatusAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	def test_func(self):
 		if self.request.user == self.request.user.empresa.dono:
 			return True
-		if Colaborador.objects.get(user=self.request.user):
+		if Colaborador.objects.get(user=self.request.user, empresa=ordem.empresa):
 			return True
 		return False
 
 	def get_success_url(self):
 		return reverse('ordem_lista')
+
+class OrdemImprimir(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+	model = Ordem
+	template_name = 'cos/ordem_cliente_print.html'
+
+	def test_func(self):
+		if self.request.user == self.request.user.empresa.dono:
+			return True
+		if Colaborador.objects.get(user=self.request.user, empresa=ordem.empresa):
+			return True
+		return False

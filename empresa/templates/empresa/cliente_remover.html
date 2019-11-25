@@ -1,0 +1,26 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+<div class="features-boxed" align="center" style="padding-bottom: 100px;">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Remover Cliente</h2>
+
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<h6>Você tem certeza que quer remover esse(a) Cliente? "{{ object.nome }}"</h6>
+				<ul class="list-group" align="left" style="padding-inline-start: 10px!important;">
+						   	<li class="list-group-item">CPF: {{ object.get_identificacao }}</li>
+						</ul>	
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-danger" type='submit'>Sim, remover</button>
+				<a class="btn btn-secondary" href="{% url 'cliente_lista' %}">Cancelar</a>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+{% endblock content %}

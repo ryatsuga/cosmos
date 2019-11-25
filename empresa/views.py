@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (
 	ListView, 
@@ -54,7 +56,7 @@ def empresa_painel(request, pk):
 	empresa = Empresa.objects.get(pk=pk)
 	Controle.objects.filter(user=request.user).update(empresa_selecionada=empresa)
 	#Seleciona OSs da empresa
-	ordens = Ordem.objects.filter(empresa=empresa)
+	ordens = Ordem.objects.filter(empresa=empresa).order_by('-data')[:3]
 	colaboradores = Colaborador.objects.filter(empresa=empresa)
 
 	cxt={'ordens':ordens, 'colaboradores':colaboradores}
@@ -73,7 +75,10 @@ def colaboradores(request):
 	return 0
 
 def clientes(request):
-	return 0
+	clientes = Cliente.objects.filter(vinculo=request.user.controle.empresa_selecionada)
+	empresa = request.user.controle.empresa_selecionada
+	numero_clientes = len(clientes)
+	return render(request, 'empresa/cliente_lista.html', {'empresa': empresa, 'clientes': clientes, 'numero_clientes':numero_clientes})
 
 def cliente_criar(request):
 	if request.method =='POST':
@@ -103,6 +108,16 @@ def cliente_criar(request):
 	return render(request, 'empresa/cliente_criar.html', {'form': form, 'cid': cid})
 
 
+class ClienteRemover(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Cliente
+	template_name = 'empresa/cliente_remover.html'
 
+	def test_func(self):
+		if self.request.user == self.request.user.empresa.dono:
+			return True
+		if Colaborador.objects.get(user=self.request.user):
+			return True
+		return False
 
-
+	def get_success_url(self):
+		return reverse('cliente_lista')

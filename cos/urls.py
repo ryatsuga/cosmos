@@ -9,6 +9,7 @@ urlpatterns = [
     path('ordem-criar/', views.ordem_criar, name='ordem_criar'),
     path('ordem-remover/<str:pk>', OrdemRemover.as_view(), name='ordem_remover'),
     path('ordem-atualizar/<str:pk>', OrdemAtualizar.as_view(), name='ordem_atualizar'),
+    path('ordem-imprimir/<str:pk>', OrdemImprimir.as_view(), name='ordem_imprimir'),
     path('ordem-atualizar-status/<str:pk>', OrdemStatusAtualizar.as_view(), name='ordem_status_atualizar'),
 
     path('marca-criar/', views.marca_criar, name='marca_criar'),

@@ -96,6 +96,24 @@ class Cliente(models.Model):
 	def __str__(self):
 		return f'{self.nome}'
 
+	def get_identificacao(self):
+		cid = self.identificacao
+		if len(cid) < 12:
+			cid = '{}.{}.{}-{}'.format(cid[:3], cid[3:6], cid[6:9], cid[9:])
+			return cid
+		else:
+			cid = '{}.{}.{}/{}-{}'.format(cid[:2], cid[2:5], cid[5:8], cid[8:12], cid [12:])
+			return cid
+		return cid
+
+	def get_endereco(self):
+		if self.complemento != None and len(self.complemento) > 0:
+			endereco = '%s, %s, %s, %s - %s/%s' % (self.endereco, self.numero, self.complemento, self.bairro, self.cidade, self.uf)
+		else:
+			endereco = '%s, %s, %s - %s/%s' % (self.endereco, self.numero, self.bairro, self.cidade, self.uf)
+		return endereco.strip()
+		
+
 class ColaboradorConvite(models.Model):
 	convidado = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário convidado', null=True, blank=True)
 	empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, verbose_name='Empresa', null=True, blank=True)

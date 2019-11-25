@@ -76,7 +76,7 @@
                         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card py-2">
                                 <div class="card-body">
-                                	<i class="fab fa-stack-exchange fa-4x text-gray-300"></i><br><br>
+                                    <i class="fas fa-sticky-note fa-4x text-gray-300"></i><br><br>
                                 	<h6 class="text-primary font-weight-bold m-0">CONTROLE DE ORDENS DE SERVIÇO</h6><br>
 
                                 	<ul class="list-group list-group-flush" style="justify-content: left;">
@@ -101,7 +101,26 @@
                         </div>
                         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card py-2">
-                                <div class="card-body"></div>
+                                <div class="card-body">
+                                    <i class="fas fa-users fa-4x text-gray-300"></i><br><br>
+                                    <h6 class="text-primary font-weight-bold m-0">CONTROLE DE CLIENTES</h6><br>
+
+                                    <ul class="list-group list-group-flush" style="justify-content: left;">
+                                    <li class="list-group-item">
+                                            <div class="col mr-2">
+                                                <a class="btn" href="{% url 'nova_ordem' %}"><i class="far fa-plus-square"></i> Novo Cliente</a>
+                                            </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <a class="btn" href="{% url 'cliente_lista' %}"><i class="far fa-eye"></i> Ver Clientes</a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3 mb-4">
@@ -168,12 +187,12 @@
                                     <li class="list-group-item">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col mr-2">
-                                                <h6 class="mb-0"><strong>OS {{ o }}</strong></h6><span class="text-xs">Início: {{ o.data|date:"d/m/Y"}} / Previsão término: {{ o.previsao|date:"d/m/Y" }}</span></div>
+                                                <h6 class="mb-0"><strong>{{ o }}</strong></h6><span class="text-xs">Início: {{ o.data|date:"d/m/Y"}} / Previsão término: {{ o.previsao|date:"d/m/Y" }}</span></div>
                                             <div class="col-auto">
 		                                                <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
 		                                       			 <div class="dropdown-menu  dropdown-menu-right animated--fade-in"
 		                                            role="menu">
-		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Imprimir</a>
+		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a><a class="dropdown-item" role="presentation" href="{% url 'ordem_imprimir' o.pk %}">&nbsp;Imprimir</a>
 		                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Atualizar</a></div>
 		                                    		</div>
                                             </div>

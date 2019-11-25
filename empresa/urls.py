@@ -1,6 +1,7 @@
 from django.urls import path
 from empresa.apps import EmpresaConfig
 from . import views
+from .views import *
 
 urlpatterns = [
     path('dashboard/', views.empresa_dashboard, name='empresa_dashboard'),
@@ -9,5 +10,7 @@ urlpatterns = [
     path('painel/<int:pk>', views.empresa_painel, name='empresa_painel'),
 
     path('cliente-criar/', views.cliente_criar, name='cliente_criar'),
+    path('cliente-remover/<int:pk>', ClienteRemover.as_view(), name='cliente_remover'),
+    path('clientes/', views.clientes, name='cliente_lista'),
 
 ]
