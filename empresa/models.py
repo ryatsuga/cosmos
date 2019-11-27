@@ -46,6 +46,7 @@ class Empresa(models.Model):
 	dono = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Dono')
 	logo = models.ImageField(_('Logo'), default='default.jpg', upload_to='negocio_pics')
 	nome_fantasia = models.CharField(_('Nome fantasia'), max_length=40, null=False, blank=False)
+	nome_unico = models.CharField(_('Identificação Única Cosmos'), max_length=20, unique=True, null=True, blank=False)
 	identificacao = models.CharField(_('CPF/CNPJ'), max_length=18, null=False, blank=False)
 	telefone = models.CharField(_('Telefone'), max_length=20, null=False, blank=True)
 	celular = models.CharField(_('Celular'), max_length=20, null=False, blank=False)

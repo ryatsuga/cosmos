@@ -42,22 +42,25 @@ def nova_ordem(request):
 	#elif request.POST['action'] == 'consultaPorId':
 	else:
 		cid = request.POST.get('clienteID', None)
-		if cid == '':
-			cid='00000000000'
+		valida_id = len(cid)
+		if valida_id == 11 or valida_id == 14:
 
-		if Cliente.objects.filter(identificacao=cid, vinculo=request.user.controle.empresa_selecionada):
+			if Cliente.objects.filter(identificacao=cid, vinculo=request.user.controle.empresa_selecionada):
 
-			cliente = Cliente.objects.get(identificacao=cid)
-			empresa = Empresa.objects.get(pk=request.user.controle.empresa_selecionada.pk)
+				cliente = Cliente.objects.get(identificacao=cid)
+				empresa = Empresa.objects.get(pk=request.user.controle.empresa_selecionada.pk)
 
-			request.session['cliente'] = cliente.id
-			request.session['empresa'] = empresa.id
+				request.session['cliente'] = cliente.id
+				request.session['empresa'] = empresa.id
 
-			return redirect('ordem_criar')
+				return redirect('ordem_criar')
 
+			else:
+				request.session['cid'] = cid
+				return redirect('cliente_criar_ex')
 		else:
-			request.session['cid'] = cid
-			return redirect('cliente_criar')
+			messages.success(request, f'CPF/CNPJ Inválido')
+			return redirect('nova_ordem')
 
 
 def ordem_criar(request):
@@ -83,6 +86,7 @@ def ordem_criar(request):
 
 class OrdemRemover(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Ordem
+	login_required = True
 	template_name = 'cos/ordem_remover.html'
 
 	def test_func(self):
@@ -97,6 +101,7 @@ class OrdemRemover(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class OrdemAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Ordem
+	login_required = True
 	form_class = OrdemAtualizarForm
 	template_name = 'cos/ordem_atualizar.html'
 
@@ -112,6 +117,7 @@ class OrdemAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class OrdemStatusAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Ordem
+	login_required = True
 	form_class = OrdemStatusAtualizarForm
 	template_name = 'cos/ordem_status_atualizar.html'
 
@@ -127,6 +133,7 @@ class OrdemStatusAtualizar(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class OrdemImprimir(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 	model = Ordem
+	login_required = True
 	template_name = 'cos/ordem_cliente_print.html'
 
 	def test_func(self):
@@ -135,3 +142,24 @@ class OrdemImprimir(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 		if Colaborador.objects.get(user=self.request.user, empresa=ordem.empresa):
 			return True
 		return False
+
+def ordem_consultar(request):
+	if request.method == 'POST':
+		search_cid = request.POST.get('clienteID', None)
+		search_osid = request.POST.get('osID', None)
+		if Ordem.objects.filter(codigo=search_osid):
+			ordem = Ordem.objects.get(codigo=search_osid)
+			if ordem.cliente.identificacao == search_cid:
+				return redirect('ordem_info', search_osid)
+		else:
+			messages.success(request, f'Não há resultados para essa pesquisa!')
+			return render(request, 'cos/ordem_consultar.html')
+	else:
+		return render(request, 'cos/ordem_consultar.html')
+
+def ordem_info(request, pk):
+	ordem = Ordem.objects.get(codigo=pk)
+	cxt = {'ordem': ordem}
+	return render(request, 'cos/ordem_info.html', cxt)
+
+

@@ -1,0 +1,29 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="features-boxed" style="padding-bottom: 100px;">
+
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Status OS</h2>
+            <p class="text-center">Situação da OS {{ ordem.codigo }}.</p>
+            </div>
+            <div class="container-fluid" style="max-width: 600px;" align="center">
+            <h2 class="text-center" style="font-size: 18px;">{{ ordem.codigo }} | {{ ordem.get_status_display|upper }} </h2> 
+
+              <ul class="list-group" align="left" style="padding-inline-start: 10px!important;">
+						   	<li class="list-group-item"><i class="fas fa-smile text-primary"></i> {{ ordem.cliente }}</li>
+						  <li class="list-group-item"> <i class="fas fa-dollar-sign text-primary"></i> R$ {{ ordem.valor}}</small></li>
+						  <li class="list-group-item"><i class="fas fa-laptop-medical text-primary"></i> {{ ordem.modelo }} <small>({{ ordem.marca }})</small></li>
+						  <li class="list-group-item"><i class="fas fa-tools text-primary"></i> {{ ordem.defeito }}</li>
+						  <li class="list-group-item"><i class="fas fa-calendar text-primary"></i> {{ ordem.data|date:"d/m/Y" }}</li>
+						  <li class="list-group-item"><i class="fas fa-clock text-primary"></i> {{ ordem.previsao|date:"d/m/Y" }}</li>
+			</ul>
+		</div>
+     
+
+</div>
+
+
+
+{% endblock content %}

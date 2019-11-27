@@ -424,3 +424,8 @@ a.btn-head-tt:hover {
 .text-xs {
     font-size: .9rem;
 }
+
+.btn-primary > a {
+  background-color: #055ada!important;
+  border-color: #055ada!important;
+}

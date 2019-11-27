@@ -5,7 +5,7 @@
 	<div class="container">
             <div class="intro">
                 <h2 class="text-center" style="font-size: 30px;">Cadastrar Cliente</h2>
-            <p class="text-center">Cadastro de cliente para o CPF/CNPJ: {{ new_cid }} <a class="btn" href="{% url 'novo_cliente' %}"><i class="fas fa-exchange-alt"></i></a></p>
+            <p class="text-center">Cadastro de cliente para o CPF/CNPJ: {{ cid }}</p>
             </div>
             <form method="POST">
 			{% csrf_token %}

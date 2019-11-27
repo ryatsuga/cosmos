@@ -22,7 +22,7 @@
 		                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v"></i></button>
 		                                       	<div class="dropdown-menu  dropdown-menu-right animated--fade-in"
 		                                            role="menu">
-		                                          <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a>
+		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_info' o.pk %}">&nbsp;Visualizar</a>
 		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_atualizar' o.pk %}">&nbsp;Atualizar Informações</a>
 		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_status_atualizar' o.pk %}">&nbsp;Atualizar Status</a>
 		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_remover' o.pk %}">&nbsp;Cancelar</a>

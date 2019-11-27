@@ -59,6 +59,25 @@
                         <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
                         <a class="btn btn-light btn-block btn-lg text-center btn-circle">Cadastre-se já!</a></div>
                         {% endif %}
+                        <div style="padding-left: 120px;">
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-5">
+                        <h1 class="text-center">Consultar Andamento de Serviço</h1>
+                        <div align="center">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group"><input class="form-control" type="text" name="clienteID" placeholder="Seu CPF/CNPJ"></div>
+                            <div class="form-group"><input class="form-control" type="text" name="osID" placeholder="Código da OS"></div>
+            
+                        
+                         <button class="btn btn-light btn-block btn-lg text-center btn-circle"  type="submit">Consultar</button>
+                         </form>
+                    </div>
+                         </div>
+                           </div>
+
+
+                     </div>
                         
                 
                 </div>
