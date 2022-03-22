@@ -1,0 +1,25 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed" style="padding-bottom: 100px;">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Atualizar Status OS</h2>
+            <p class="text-center">Selecione o atual status da OS.</p>
+            </div>
+            <h2 class="text-center" style="font-size: 18px;">{{ object.codigo }} | {{ object.get_status_display|upper }} </h2> 
+            <form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ form|crispy }}					
+			</fieldset>
+			<div class="form-group" align="center">
+				<button class="btn btn-primary" type='submit' name="action" value="novaOrdem" >Cadastrar</button>
+			</div>
+			<br>
+		</form>
+</div>
+</div>
+
+
+{% endblock content %}

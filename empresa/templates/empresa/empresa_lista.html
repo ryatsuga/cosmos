@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+	<div class="container" align="center">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important">Sou dono de...</h2>
+            </div>
+            {% if empresas_usuario|length > 0 %}
+            <div class="row justify-content-center features">
+            	{% for e in empresas_usuario %}
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-building icon"></i>
+                        <h3 class="name">{{ e.nome_fantasia }}</h3>
+                        <p class="text-center description">Situada na {{ e.endereco_completo }}</p>
+                        <a class="btn btn-primary" href="{% url 'empresa_painel' e.id %}">Gerir</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <br>
+            <p>Nenhuma empresa.</p>
+           <a class="btn btn-primary" href="{% url 'empresa_criar' %}">Cadastrar Minha Empresa</a><br><br>
+            {% endif %}
+
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 20px; margin-bottom: 0px!important; padding-top: 0px!important">Sou colaborador em...</h2>
+            </div><br>
+            
+            <p>Nenhuma empresa.</p><br><br>
+
+</div>
+</div>
+
+
+{% endblock content %}

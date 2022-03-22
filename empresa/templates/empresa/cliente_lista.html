@@ -1,0 +1,62 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed" style="padding-bottom: 70px;">
+	<div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Lista de Clientes</h2>
+            <p class="text-center">{{ empresa.nome_fantasia|upper}} possui {{ numero_clientes }} cliente(s).</p>
+            </div>
+           <h2><a class="btn btn-primary" href="{% url 'nova_ordem' %}"><i class="far fa-plus-square"></i> Novo Cliente</a></h2>
+    <table id="tabelaPedidos" class="display table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Cidade</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+{% for c in clientes %}
+    <tr>
+      <th scope="row">{{ c.nome }}</th>
+      <td>{{ c.get_identificacao }}</td>
+      <td>{{ c.celular }}</td>
+      <td>{{ c.cidade }} <small>({{c.uf}})</small></td>
+      <td>
+   <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v"></i></button>
+		  <div class="dropdown-menu  dropdown-menu-right animated--fade-in" role="menu">
+		    <a class="dropdown-item" role="presentation" href="#">&nbsp;Visualizar</a>
+		 <a class="dropdown-item" role="presentation" href="#">&nbsp;Atualizar</a>
+		  <a class="dropdown-item" role="presentation" href="{% url 'cliente_remover' c.pk %}">&nbsp;Remover</a>
+			</div>
+
+        </td>
+    </tr>
+  {% endfor %}
+  
+</tbody>
+</table>
+</div>
+</div>
+
+
+<!-- JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript">
+  $.noConflict();
+  jQuery(document).ready( function ($) {
+    $('#tabelaPedidos').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        }
+    });
+} );</script>
+<!-- Fim JS -->
+
+{% endblock content %}

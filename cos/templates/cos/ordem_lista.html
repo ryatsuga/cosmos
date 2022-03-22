@@ -1,0 +1,53 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Ordens de Serviço</h2>
+
+            </div>
+            <div class="row justify-content-center features">
+            	{% for o in ordens %}
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box">
+                    	<div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                        <h6 class="name text-primary">{{ o.codigo }} <small class="text-secondary font-weight-bold" style="font-size: 10px;">({{ o.get_status_display|upper }})</small></h6>
+                    </div>
+                        <div class="col-auto">
+                        	<a class="btn btn-link btn-sm" href="{% url 'ordem_imprimir' o.pk %}"><i class="fas fa-print"></i></a>
+                        </div>
+                        	<div class="col-auto">
+		                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v"></i></button>
+		                                       	<div class="dropdown-menu  dropdown-menu-right animated--fade-in"
+		                                            role="menu">
+		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_info' o.pk %}">&nbsp;Visualizar</a>
+		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_atualizar' o.pk %}">&nbsp;Atualizar Informações</a>
+		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_status_atualizar' o.pk %}">&nbsp;Atualizar Status</a>
+		                                          <a class="dropdown-item" role="presentation" href="{% url 'ordem_remover' o.pk %}">&nbsp;Cancelar</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                     </div>
+
+						   <ul class="list-group-flush" align="left" style="padding-inline-start: 10px!important;">
+						   	<li class="list-group-item"><i class="fas fa-smile text-primary"></i> {{ o.cliente }}</li>
+						  <li class="list-group-item"> <i class="fas fa-dollar-sign text-primary"></i> R$ {{ o.valor}}</small></li>
+						  <li class="list-group-item"><i class="fas fa-laptop-medical text-primary"></i> {{ o.modelo }} <small>({{ o.marca }})</small></li>
+						  <li class="list-group-item"><i class="fas fa-tools text-primary"></i> {{ o.defeito }}</li>
+						  <li class="list-group-item"><i class="fas fa-calendar text-primary"></i> {{ o.data|date:"d/m/Y" }}</li>
+						  <li class="list-group-item"><i class="fas fa-clock text-primary"></i> {{ o.previsao|date:"d/m/Y" }}</li>
+
+						</ul>
+						                        
+                    </div>
+                </div>
+
+                {% endfor %}
+			</div>
+		</div>
+</div>
+
+{% endblock content %}

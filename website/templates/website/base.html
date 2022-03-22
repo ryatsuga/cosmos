@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+     <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asset">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coda+Caption:800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/styles.min.css' %}">
+
+    {% if title %}
+        <title>COSMOS - {{ title }}</title>
+    {% else %}
+        <title>COSMOS</title>
+    {% endif %}
+</head>
+
+<body id="page-top">
+
+  <div class="header-blue" style="height: 120px;">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navcol-1">
+                         <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'home' %}" style="font-size: 20px;">Consultas</a></span><span style="margin-right: 8px;">|</span><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'empresa_lista' %}" style="font-size: 20px;">Área Associado</a></span></div>
+                </div>
+                {% if user.is_authenticated %}
+               <li class="nav-item no-li-display dropdown">
+               <a class="nav-link-head-aux dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle header-acc-img" href="#" src="{{ user.perfil.image.url }}"></a>
+               <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{% url 'perfil' %}">Logado como <strong>{{ user.username }}</strong></a>
+                <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{% url 'perfil' %}">Meu perfil</a>
+
+
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+               </div>
+               </li>
+              {% else %}
+               <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastrar</a></div>
+                </div>
+              {% endif %}
+                </div>
+              </nav>
+        </div>
+     
+          
+{% block content %}{% endblock %}
+
+
+    
+<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</body>
+
+<div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Serviços</h3>
+                        <ul>
+                            <li><a href="#">Gerenciamento de OSs</a></li>
+                            <li><a href="#">Gerenciamento de Empreendimento</a></li>
+                            <li><a href="#">Gerenciamento de Skateholders</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Sobre Nós</h3>
+                        <ul>
+                            <li><a href="#">Empresa</a></li>
+                            <li><a href="#">Time de Desenvolvimento</a></li>
+                            <li><a href="#">Planos Futuros</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>COSMOS</h3>
+                        <p>Prezamos a satisfação de nossos clientes de forma a nos empenharmos para sempre mantê-los satisfeitos, sempre atendendo a suas demandas diversas.&nbsp;</p>
+                    </div>
+                    <div class="col item social"><a href="https://github.com/ryatsuga/cosmos"><i class="icon ion-social-github"></i></a></div>
+                </div>
+                <p class="copyright">COSMOS © 2019 - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+    </div>
+</html>

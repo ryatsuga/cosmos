@@ -1,0 +1,30 @@
+{% extends "website/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="features-boxed" style="padding-bottom: 100px;">
+<div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Consultar Andamento de Serviço</h2>
+            <p class="text-center">Insira os dados abaixo para realizar a consulta de andamento do seu serviço.</p>
+            </div>
+                        <br><div class="container-fluid" style="max-width: 800px;" align="center">
+                        <form method="POST">
+                        	{% csrf_token %}
+                             {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid">
+              <div class="alert alert-danger">
+                {{ message }}
+              </div>{% endfor %}
+          </div>{% endif %}
+                            <div class="form-group"><input class="form-control" type="text" name="clienteID" placeholder="Seu CPF/CNPJ"></div>
+                            <div class="form-group"><input class="form-control" type="text" name="osID" placeholder="Código da OS"></div><br>
+           
+                         <button class="btn btn-primary"  type="submit">Consultar</button>
+                         </form>
+                    </div>
+     
+
+</div>
+
+{% endblock content %}

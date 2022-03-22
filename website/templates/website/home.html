@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/main.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asset">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coda+Caption:800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="{% static 'website/css/styles.min.css' %}">
+    {% if title %}
+        <title>COSMOS - {{ title }}</title>
+    {% else %}
+        <title>COSMOS</title>
+    {% endif %}
+</head>
+
+<body id="page-top">
+    <div>
+        <div class="header-blue">
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Bungee Shade', cursive;font-size: 40px;">COSMOS</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          {% if user.is_authenticated %}
+          <div>
+          <a class="btn btn-light action-button" role="button" href="{% url 'empresa_lista' %}" style="font-size: 20px;">Painel de Controle</a>
+          {% else %}
+
+                    <div id="navbarToggle"><span class="navbar-text"> <a class="login btn-head-pad" href="{% url 'login' %}" style="font-size: 20px;">Login</a></span><a class="btn btn-light action-button" role="button" href="{% url 'register' %}" style="font-size: 20px;">Cadastro</a></div>
+                </div>
+            {% endif %}
+            </nav>
+            <div class="container hero" style="text-align: center;">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-5">
+                        {% if user.is_authenticated %}
+                        <h1 class="text-center">Bem-vindo, {{ user.perfil.nome_completo }}</h1>
+                        <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle" href="{% url 'services' %}">Explorar!</a></div>
+                        {% else %}
+                        <h1 class="text-center">Aumente sua Produtividade!</h1>
+                        <p>Gerencie de forma simples e segura suas Ordens de Serviço através de nossa plataforma.</p>
+                        <a class="btn btn-light btn-block btn-lg text-center btn-circle">Cadastre-se já!</a></div>
+                        {% endif %}
+                        <div style="padding-left: 120px;">
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-5">
+                        <h1 class="text-center">Consultar Andamento de Serviço</h1>
+                        <div align="center">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group"><input class="form-control" type="text" name="clienteID" placeholder="Seu CPF/CNPJ"></div>
+                            <div class="form-group"><input class="form-control" type="text" name="osID" placeholder="Código da OS"></div>
+            
+                        
+                         <button class="btn btn-light btn-block btn-lg text-center btn-circle"  type="submit">Consultar</button>
+                         </form>
+                    </div>
+                         </div>
+                           </div>
+
+
+                     </div>
+                        
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="font-size: 30px;">Serviços</h2>
+                <p class="text-center">O Cosmos oferece uma plataforma web responsiva para a gestão de seu empreendimento de manutenção de disposivos.</p>
+            </div>
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="far fa-building icon"></i>
+                        <h3 class="name">Gestão de Empreendimento</h3>
+                        <p class="text-center description">Gerencie e organize seu negócio de maneira simples e rápida.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-users icon"></i>
+                        <h3 class="name">Gestão de Colaboradores</h3>
+                        <p class="text-center description">Faça a gestão de seus colaboradores atribuindo-os todas as competencias necessárias para corresponder às diretrizes de seu empreendimento.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-cart-plus icon"></i>
+                        <h3 class="name">Gestão de Fornecedores</h3>
+                        <p class="text-center description">Cansado dos problemas relacionados aos dados de seus fornecedores? Deixe que o Cosmos cuide disso para você!</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-list-alt icon"></i>
+                        <h3 class="name">Gestão de Ordens de Serviço</h3>
+                        <p class="text-center description">Monitore em tempo real o andamento de suas Ordens de Serviço e obtenha informações completas desde o funcionário responsável ao prazo de entrega.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fas fa-desktop icon"></i>
+                        <h3 class="name">Responsividade</h3>
+                        <p class="text-center description">Gerencie seu Negócio através da Internet! O Cosmos é compatível com a maioria dos dispositivos Mobile e Desktop.&nbsp;</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="far fa-smile icon"></i>
+                        <h3 class="name">Interação Assistência-Cliente</h3>
+                        <p class="text-center description">Mantenha o Cliente sempre informado sobre o seus Serviços de Manutenção em Andamento!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials-clean" style="background-color: rgba(24,78,142,0.87);">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center text-light" style="font-size: 30px;">Equipe</h2>
+                <p class="text-center text-light">Somos estudantes de graduação em Sistemas de Informação no Centro Universitário UNA e almejamos a oportunidade de consolidar nossos conhecimentos por intermédio de uma aplicação de sucesso.</p>
+            </div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">Elaborador do conceito inicial do projeto e Desenvolvedor Full Stack.<br>#Python #Django</p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'website/img/pp.jpg' %}">
+                        <h5 class="text-light name">Leandro Felipe</h5>
+                        <p class="text-light title">CEO</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">Coordenador de Atividades Operacionais, Analista de Requisitos, Tester e Desenvolvedor Front-end.</p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'website/img/Foto.jpg' %}">
+                        <h5 class="text-light name">Guilherme Andrade</h5>
+                        <p class="text-light title">DevOPS e Front-end Developer</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">Elaborador da Modelagem Conceitual e Física do Banco de Dados.<br>#SQL</p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'website/img/pp%20(1).jpg' %}">
+                        <h5 class="text-light name">Renan Borges</h5>
+                        <p class="text-light title">DBA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-clean">
+        <form method="post">
+            <h2 class="text-center" style="font-size: 30px;">Entre em contato conosco!</h2>
+            <div class="form-group"><input class="form-control" type="text" name="nome_completo" placeholder="Nome"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><textarea class="form-control" name="mensagem" placeholder="Escreva sua mensagem" rows="14"></textarea></div>
+            <div class="form-group" align="center"><button class="btn btn-primary" type="submit">ENVIAR</button></div>
+        </form>
+    </div>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Serviços</h3>
+                        <ul>
+                            <li><a href="#">Gerenciamento de OSs</a></li>
+                            <li><a href="#">Gerenciamento de Empreendimento</a></li>
+                            <li><a href="#">Gerenciamento de Skateholders</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Sobre Nós</h3>
+                        <ul>
+                            <li><a href="#">Empresa</a></li>
+                            <li><a href="#">Time de Desenvolvimento</a></li>
+                            <li><a href="#">Planos Futuros</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>COSMOS</h3>
+                        <p>Prezamos a satisfação de nossos clientes de forma a nos empenharmos para sempre mantê-los satisfeitos, sempre atendendo a suas demandas diversas.&nbsp;</p>
+                    </div>
+                    <div class="col item social"><a href="https://github.com/ryatsuga/cosmos"><i class="icon ion-social-github"></i></a></div>
+                </div>
+                <p class="copyright">COSMOS © 2019 - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+    </div>
+   
+   <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</body>
+
+</html>
